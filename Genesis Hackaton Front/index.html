@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0A0F">
+  <meta name="description" content="Genesis Audit Lab — воспроизводимая среда для проверки ИИ-агентов на синтетических финансовых данных.">
+  <title>Genesis Audit Lab — среда для финансового аудита ИИ</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <!-- Общие контуры иконок наследуют цвет компонента. -->
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-mark" viewBox="0 0 40 40">
+      <path d="M20 3 35 12v16L20 37 5 28V12L20 3Z"/>
+      <path d="m5 12 15 9 15-9M20 21v16M12.5 7.5l15 9V32.5"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24">
+      <path d="M8 5.5c0-.8.9-1.2 1.55-.8l10 6.5a1 1 0 0 1 0 1.6l-10 6.5c-.65.4-1.55 0-1.55-.8Z"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M4 12h15M13 6l6 6-6 6"/>
+    </symbol>
+    <symbol id="i-up" viewBox="0 0 24 24">
+      <path d="M12 19V5M6 11l6-6 6 6"/>
+    </symbol>
+    <symbol id="i-down" viewBox="0 0 24 24">
+      <path d="M12 5v14m-6-6 6 6 6-6"/>
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="m9 5 7 7-7 7"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M5 12h14M12 5v14"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4 8h16M4 16h16"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="m6 6 12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24">
+      <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/>
+      <path d="m7 9 3 3-3 3m6 0h4"/>
+    </symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24">
+      <path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5m-18 4 9 5 9-5"/>
+    </symbol>
+    <symbol id="i-proof" viewBox="0 0 24 24">
+      <path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10Zm0 0v7h7M8 15l2 2 5-5"/>
+    </symbol>
+    <symbol id="i-track" viewBox="0 0 24 24">
+      <path d="M3 16h4l3-8 4 11 3-7h4"/>
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24">
+      <path d="M6 10V7a6 6 0 0 1 12 0v3M5 10h14a1 1 0 0 1 1 1v9H4v-9a1 1 0 0 1 1-1Zm7 4v3"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="m5 12 5 5 9-10"/>
+    </symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24">
+      <path d="M9 6v12m6-12v12"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <path d="M9 8h10v12H9zM15 8V4H5v12h4"/>
+    </symbol>
+    <symbol id="i-lab" viewBox="0 0 24 24">
+      <path d="M9 3h6m-5 0v7l-6 9c-.55 1 .15 2 1.2 2h13.6c1.05 0 1.75-1 1.2-2l-6-9V3M8 15h8"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5"/>
+      <path d="M12 7v5l3 2"/>
+    </symbol>
+  </svg>
+
+  <!-- Шторка появляется только после инициализации скрипта. -->
+  <div class="loader" hidden aria-hidden="true">
+    <div class="loader-curtain"></div>
+    <div class="loader-content">
+      <svg class="icon loader-mark" viewBox="0 0 40 40">
+        <path d="M20 3 35 12v16L20 37 5 28V12L20 3Z" pathLength="1"/>
+        <path d="m5 12 15 9 15-9M20 21v16M12.5 7.5l15 9V32.5" pathLength="1"/>
+      </svg>
+      <div class="loader-caption">
+        <span>Audit Lab</span>
+        <span class="mono" data-loader-count>0%</span>
+      </div>
+      <div class="loader-track"><span data-loader-progress></span></div>
+    </div>
+  </div>
+  <div class="cursor-layer" hidden aria-hidden="true">
+    <span class="cursor-ring"></span>
+    <span class="cursor-dot"></span>
+  </div>
+  <div class="burst-layer" aria-hidden="true"></div>
+
+  <!-- Липкая навигация и полноэкранный мобильный диалог. -->
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="wordmark" href="#top" aria-label="Genesis Audit Lab — начало страницы">
+        <span class="wordmark-symbol">
+          <svg class="icon" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-mark"/></svg>
+        </span>
+        <span class="wordmark-text">Genesis<span>Audit Lab</span></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a class="text-link" href="#features">Возможности</a>
+        <a class="text-link" href="#workflow">Как работает</a>
+        <a class="text-link" href="#demo">Демо</a>
+        <a class="text-link" href="#pricing">Доступ</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="live-label"><span class="live-dot" aria-hidden="true"></span>Демо доступно</span>
+        <a class="button button-small button-outline desktop-launch" href="audit.html">
+          Открыть среду
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <button class="button icon-button mobile-toggle" type="button" aria-label="Открыть меню"
+          aria-controls="mobile-menu" aria-expanded="false" data-open-menu>
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <dialog class="menu-dialog" id="mobile-menu" aria-labelledby="menu-title">
+    <div class="container menu-layout">
+      <div class="menu-head">
+        <h2 id="menu-title">Audit Lab</h2>
+        <button class="button icon-button" type="button" data-close-menu aria-label="Закрыть меню" autofocus>
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <nav class="mobile-links" aria-label="Мобильная навигация">
+        <a href="#features" style="--menu-index: 0">Возможности</a>
+        <a href="#workflow" style="--menu-index: 1">Как работает</a>
+        <a href="#demo" style="--menu-index: 2">Демо</a>
+        <a href="#pricing" style="--menu-index: 3">Доступ</a>
+        <a href="#faq" style="--menu-index: 4">FAQ</a>
+      </nav>
+      <a class="button button-primary menu-launch" href="audit.html">
+        Открыть среду <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+  </dialog>
+
+  <main id="main" tabindex="-1">
+    <!-- Первый экран сразу связывает ценность продукта с локальным демо. -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-atmosphere" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-orb orb-violet"></div>
+        <div class="hero-orb orb-cyan"></div>
+        <div class="hero-orb orb-rose"></div>
+        <canvas class="hero-particles"></canvas>
+      </div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="tag hero-tag"><span class="tag-mark"></span>Среда для FinTech-команд</p>
+          <h1 id="hero-title" aria-label="Среда для аудита ИИ-агентами">
+            <span class="hero-line" aria-hidden="true">
+              <span class="hero-word" style="--word-index: 0">Среда</span>
+              <span class="hero-word" style="--word-index: 1">для</span>
+              <span class="hero-word" style="--word-index: 2">аудита</span>
+            </span>
+            <span class="hero-line" aria-hidden="true">
+              <span class="hero-word gradient-text" style="--word-index: 3">ИИ-агентами</span>
+            </span>
+          </h1>
+          <p class="hero-description">Проверяйте, как агент сверяет финансовые документы, находит расхождения и прикладывает доказательства.</p>
+          <div class="hero-actions">
+            <a class="button button-primary button-prominent" href="audit.html" data-magnetic data-burst>
+              <span>Открыть демо</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a class="button button-glass button-prominent" href="#demo">
+              <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Посмотреть превью
+            </a>
+          </div>
+          <p class="hero-meta">Локальный запуск <span></span> Синтетические записи</p>
+        </div>
+        <figure class="hero-figure" data-parallax>
+          <div class="figure-orbit orbit-outer" aria-hidden="true"></div>
+          <div class="figure-orbit orbit-inner" aria-hidden="true"></div>
+          <div class="hero-console">
+            <div class="console-header">
+              <div class="console-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span class="console-file mono">audit / demo-001</span>
+              <span class="console-mode"><span></span>Открытый</span>
+            </div>
+            <div class="console-body">
+              <div class="console-project">
+                <div class="console-art" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 40 40"><use href="#i-mark"/></svg>
+                </div>
+                <div><p>Эпизод расследования</p><h2>Октябрьские проводки</h2></div>
+              </div>
+              <div class="console-ledger">
+                <div class="console-ledger-head"><span>ID записи</span><span>Проводка</span><span>Дебет</span></div>
+                <div class="console-ledger-row"><code>L-104</code><span>Расходы</span><strong>125 000 ₸</strong></div>
+                <div class="console-ledger-row"><code>L-118</code><span>Частичный платёж</span><strong>50 000 ₸</strong></div>
+                <div class="console-ledger-row console-highlight"><code>L-136</code><span>Расходы</span><strong>125 000 ₸</strong></div>
+              </div>
+              <div class="console-terminal mono">
+                <svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>
+                <span>get_document(<b>"DOC-I019"</b>)</span>
+              </div>
+            </div>
+            <div class="console-footer">
+              <span><span class="console-footer-dot"></span>Инструмент готов</span>
+              <span class="mono">03 / 100 шагов</span>
+            </div>
+          </div>
+          <figcaption class="hero-figure-note">
+            <svg class="icon" aria-hidden="true"><use href="#i-proof"/></svg>
+            <span><strong>Запись → доказательство</strong><code>INV-019 · DOC-I019</code></span>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="container hero-bottom">
+        <a class="scroll-link text-link" href="#features">
+          <span class="scroll-icon"><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></span>
+          Изучить возможности
+        </a>
+        <span class="hero-footer-note mono">LEDGER · EVIDENCE · REPLAY</span>
+      </div>
+    </section>
+
+    <!-- Лента открытых форматов и интерфейсов. -->
+    <section class="formats" aria-labelledby="formats-title">
+      <div class="container formats-head">
+        <h2 id="formats-title">Открытые форматы и интерфейсы</h2>
+        <button class="plain-control formats-control" type="button" aria-controls="formats-track"
+          aria-pressed="false" aria-label="Приостановить ленту форматов" data-marquee-toggle>
+          <svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg>
+        </button>
+      </div>
+      <div class="formats-window">
+        <div class="formats-track" id="formats-track">
+          <ul class="formats-list" data-marquee-source>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>CSV</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>JSONL</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>ISO 8601</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-lab"/></svg>Gymnasium-style</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-proof"/></svg>JSON Schema</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Bento показывает конкретные артефакты открытого эпизода. -->
+    <section class="section features" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="section-label">Возможности</p>
+          <h2 id="features-title">Аудит, который можно <span class="soft-text">повторить</span></h2>
+          <p>От исходной проводки до журнала действий — каждый вывод можно проследить до данных эпизода.</p>
+        </div>
+        <div class="bento">
+          <article class="bento-card bento-wide card-ledger" data-reveal data-tilt style="--stagger: 0">
+            <div class="feature-copy">
+              <span class="feature-icon">
+                <svg class="icon draw-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5m-18 4 9 5 9-5" pathLength="1"/>
+                </svg>
+              </span>
+              <h3>Связанные финансовые документы</h3>
+              <p>Проводки, счета и платежи относятся к одной компании и одному отчётному периоду.</p>
+            </div>
+            <div class="ledger-map mono" role="img" aria-label="Связь проводки L-104 со счётом INV-019 и платежом PAY-041">
+              <span class="map-record"><small>Проводка</small>L-104</span>
+              <span class="map-line" aria-hidden="true"></span>
+              <span class="map-record map-current"><small>Счёт</small>INV-019</span>
+              <span class="map-line" aria-hidden="true"></span>
+              <span class="map-record"><small>Платёж</small>PAY-041</span>
+            </div>
+          </article>
+          <article class="bento-card card-budget" data-reveal data-tilt style="--stagger: 1">
+            <div class="feature-copy">
+              <span class="feature-icon feature-cyan">
+                <svg class="icon draw-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 16h4l3-8 4 11 3-7h4" pathLength="1"/>
+                </svg>
+              </span>
+              <h3>Бюджет действий</h3>
+              <p>Запрос записи, расчёт и отправка расходуют шаги.</p>
+            </div>
+            <div class="feature-budget">
+              <span class="budget-number mono" data-count="100">100</span>
+              <span>шагов на эпизод</span>
+              <div class="budget-bars" aria-hidden="true"></div>
+            </div>
+          </article>
+          <article class="bento-card card-isolation" data-reveal data-tilt style="--stagger: 2">
+            <div class="feature-copy">
+              <span class="feature-icon feature-rose">
+                <svg class="icon draw-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 10V7a6 6 0 0 1 12 0v3M5 10h14a1 1 0 0 1 1 1v9H4v-9a1 1 0 0 1 1-1Zm7 4v3" pathLength="1"/>
+                </svg>
+              </span>
+              <h3>Изолированный эталон</h3>
+              <p>Интерфейс агента получает открытые записи. Закрытые ответы остаются у оценщика.</p>
+            </div>
+            <div class="boundary-visual">
+              <span><i></i>Наблюдение агента</span>
+              <span><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Закрытый эталон</span>
+            </div>
+          </article>
+          <article class="bento-card bento-wide card-replay" data-reveal data-tilt style="--stagger: 3">
+            <div class="feature-copy">
+              <span class="feature-icon">
+                <svg class="icon draw-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm3 4 3 3-3 3m6 0h4" pathLength="1"/>
+                </svg>
+              </span>
+              <h3>Траектория каждого запроса</h3>
+              <p>Сверяйте действия и наблюдения по шагам. Выгружайте траекторию в JSONL.</p>
+            </div>
+            <div class="replay-visual mono">
+              <span><b>01</b><code>list_records</code><span>ledger</span></span>
+              <span><b>02</b><code>get_record</code><span>INV-019</span></span>
+              <span><b>03</b><code>get_document</code><span>DOC-I019</span></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Прогресс таймлайна зависит от положения секции в окне. -->
+    <section class="section workflow section-line" id="workflow" aria-labelledby="workflow-title">
+      <div class="container">
+        <div class="section-heading split-heading" data-reveal>
+          <div>
+            <p class="section-label">Как работает</p>
+            <h2 id="workflow-title">Один эпизод. <span class="soft-text">Три шага.</span></h2>
+          </div>
+          <p>Сначала получите наблюдение, затем соберите доказательства и отправьте выводы.</p>
+        </div>
+        <div class="workflow-steps" data-timeline>
+          <div class="timeline-rail" aria-hidden="true"><span data-timeline-progress></span></div>
+          <ol>
+            <li data-reveal style="--stagger: 0">
+              <span class="step-node mono"><span class="sr-only">Шаг </span>01</span>
+              <span class="action-label mono">reset</span>
+              <h3>Откройте эпизод</h3>
+              <p>Проверьте валюту, период и политику округления. Начальная задача задаёт контекст для запросов.</p>
+            </li>
+            <li data-reveal style="--stagger: 1">
+              <span class="step-node mono"><span class="sr-only">Шаг </span>02</span>
+              <span class="action-label mono">step</span>
+              <h3>Сверьте записи</h3>
+              <p>Запросите проводки и первичные документы. Зафиксируйте ID записей, которые подтверждают вывод.</p>
+            </li>
+            <li data-reveal style="--stagger: 2">
+              <span class="step-node mono"><span class="sr-only">Шаг </span>03</span>
+              <span class="action-label mono">submit</span>
+              <h3>Отправьте результат</h3>
+              <p>Передайте список выводов или пустой ответ. Скачайте JSON и журнал эпизода для разбора.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- У каждого сценария свой доступный ARIA tabpanel. -->
+    <section class="section demo section-line" id="demo" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="section-label">Интерактивное превью</p>
+          <h2 id="demo-title">От проводки <span class="soft-text">до вывода</span></h2>
+          <p>Посмотрите, что агент получает, как прикладывает доказательства и что записывается в журнал.</p>
+        </div>
+        <div class="demo-window" data-reveal>
+          <div class="demo-bar">
+            <div class="demo-window-title">
+              <svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg>
+              <span>Audit Lab</span><code>demo-001</code>
+            </div>
+            <span class="demo-mode"><span></span>Открытый эпизод</span>
+          </div>
+          <div class="demo-tabs" role="tablist" aria-label="Режим превью">
+            <button class="tab-button" type="button" id="tab-ledger" role="tab" aria-selected="true" aria-controls="panel-ledger">
+              <svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg>Проводки
+            </button>
+            <button class="tab-button" type="button" id="tab-evidence" role="tab" aria-selected="false" aria-controls="panel-evidence" tabindex="-1">
+              <svg class="icon" aria-hidden="true"><use href="#i-proof"/></svg>Вывод
+            </button>
+            <button class="tab-button" type="button" id="tab-trace" role="tab" aria-selected="false" aria-controls="panel-trace" tabindex="-1">
+              <svg class="icon" aria-hidden="true"><use href="#i-track"/></svg>Траектория
+            </button>
+          </div>
+          <div class="demo-panels" data-tab-panels>
+            <div class="demo-panel" id="panel-ledger" role="tabpanel" aria-labelledby="tab-ledger" tabindex="0">
+              <div class="demo-panel-copy">
+                <span class="action-label mono">list_records</span>
+                <h3>Проводки за октябрь</h3>
+                <p>У двух строк указан один счёт. Откройте первичный документ, чтобы проверить, действительно ли запись дублируется.</p>
+                <a class="text-link panel-link" href="audit.html">Запросить записи в демо <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <div class="demo-data-card">
+                <div class="demo-data-title"><code>ledger.csv</code><span>Пример выборки</span></div>
+                <div class="demo-table-scroll" tabindex="0" role="region" aria-label="Пример проводок">
+                  <table>
+                    <thead>
+                      <tr><th scope="col">Запись</th><th scope="col">Счёт</th><th scope="col">Дебет</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><code>L-104</code></td><td>INV-019</td><td>125 000 ₸</td></tr>
+                      <tr><td><code>L-118</code></td><td>INV-019</td><td>50 000 ₸</td></tr>
+                      <tr><td><code>L-136</code></td><td>INV-019</td><td>125 000 ₸</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="demo-panel" id="panel-evidence" role="tabpanel" aria-labelledby="tab-evidence" tabindex="0" hidden>
+              <div class="demo-panel-copy">
+                <span class="action-label mono">submit</span>
+                <h3>Вывод с доказательствами</h3>
+                <p>Укажите тип расхождения, затронутые записи, сумму и ID источников. Сумма передаётся в минимальных единицах валюты.</p>
+                <a class="text-link panel-link" href="audit.html">Создать свой вывод <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <div class="demo-data-card code-frame">
+                <div class="demo-data-title">
+                  <code>findings.json</code>
+                  <button class="plain-control copy-control" type="button" data-copy="finding-example" aria-label="Копировать JSON">
+                    <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+                  </button>
+                </div>
+                <pre tabindex="0" aria-label="Пример JSON"><code id="finding-example">{
+  "episode_id": "demo-001",
+  "findings": [{
+    "type": "duplicate_invoice",
+    "affected_ids": ["L-104", "L-136"],
+    "claimed_amount_minor": 12500000,
+    "currency": "KZT",
+    "evidence_ids": ["L-104", "L-136", "DOC-I019"],
+    "explanation": "Две записи по одному счёту."
+  }]
+}</code></pre>
+              </div>
+            </div>
+            <div class="demo-panel" id="panel-trace" role="tabpanel" aria-labelledby="tab-trace" tabindex="0" hidden>
+              <div class="demo-panel-copy">
+                <span class="action-label mono">trajectories.jsonl</span>
+                <h3>История запроса</h3>
+                <p>Траектория связывает действие, наблюдение и остаток шагов. По журналу видно, откуда взялись доказательства.</p>
+                <a class="text-link panel-link" href="audit.html#trajectory">Открыть журнал среды <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              </div>
+              <div class="demo-data-card code-frame">
+                <div class="demo-data-title"><code>trace.preview</code><span>Шаг 03</span></div>
+                <code class="trace-command" data-typing>get_document("DOC-I019")</code>
+                <pre><code>{
+  "doc_id": "DOC-I019",
+  "invoice_id": "INV-019",
+  "remaining_steps": 97
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="demo-caption"><span class="caption-dot"></span>Превью использует записи открытого синтетического эпизода.</p>
+      </div>
+    </section>
+    <!-- Сценарии ролей обозначены как примеры использования. -->
+    <section class="section stories section-line" id="stories" aria-labelledby="stories-title">
+      <div class="container">
+        <div class="section-heading split-heading" data-reveal>
+          <div>
+            <p class="section-label">Сценарии использования</p>
+            <h2 id="stories-title">Для тех, кто <span class="soft-text">проверяет</span></h2>
+          </div>
+          <p>Примеры задач команды разработки, автора данных и проверяющего.</p>
+        </div>
+        <div class="story-carousel" role="region" aria-label="Примеры задач команд" aria-roledescription="карусель" data-carousel data-reveal>
+          <div class="carousel-controls">
+            <button type="button" class="button icon-button previous-story" aria-label="Предыдущий сценарий" data-story-prev>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </button>
+            <button type="button" class="button icon-button" aria-label="Следующий сценарий" data-story-next>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </button>
+            <button type="button" class="button icon-button" aria-label="Приостановить смену сценариев" aria-pressed="false" data-story-play>
+              <svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg>
+            </button>
+          </div>
+          <div class="story-track" tabindex="0" aria-label="Сценарии, листайте стрелками" data-story-track>
+            <figure class="story-card" aria-label="1 из 3">
+              <div class="story-content">
+                <span class="story-quote" aria-hidden="true">“</span>
+                <blockquote>Как проверить, что агент обосновывает вывод источниками?</blockquote>
+              </div>
+              <figcaption><span class="story-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg></span><span>Команда разработки агента<small>Проверка доказательств по ID</small></span></figcaption>
+            </figure>
+            <figure class="story-card story-violet" aria-label="2 из 3">
+              <div class="story-content">
+                <span class="story-quote" aria-hidden="true">“</span>
+                <blockquote>Хочу повторить эпизод и убедиться, что документы дают то же расхождение.</blockquote>
+              </div>
+              <figcaption><span class="story-icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><span>Автор синтетических данных<small>Сверка записей между прогонами</small></span></figcaption>
+            </figure>
+            <figure class="story-card story-cyan" aria-label="3 из 3">
+              <div class="story-content">
+                <span class="story-quote" aria-hidden="true">“</span>
+                <blockquote>На каком шаге агент получил документ, который приложил к выводу?</blockquote>
+              </div>
+              <figcaption><span class="story-icon"><svg class="icon" aria-hidden="true"><use href="#i-proof"/></svg></span><span>Проверяющий результаты<small>Разбор траектории до отправки</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="story-indicators" aria-label="Выбрать сценарий">
+            <button type="button" aria-label="Сценарий 1" aria-current="true" data-story-index="0"><span></span></button>
+            <button type="button" aria-label="Сценарий 2" data-story-index="1"><span></span></button>
+            <button type="button" aria-label="Сценарий 3" data-story-index="2"><span></span></button>
+          </div>
+          <p class="sr-only" aria-live="polite" data-carousel-announcement></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Переключатель меняет период и значения демонстрационных цен. -->
+    <section class="section pricing section-line" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="section-heading split-heading" data-reveal>
+          <div>
+            <p class="section-label">Доступ</p>
+            <h2 id="pricing-title">Выберите <span class="soft-text">формат работы</span></h2>
+          </div>
+          <div class="pricing-aside">
+            <p>Открытое демо доступно сейчас. Цены и возможности расширенных планов приведены для примера.</p>
+            <div class="billing-switch" role="group" aria-label="Период демонстрационных цен">
+              <button type="button" data-billing="month" aria-pressed="true">Месяц</button>
+              <button type="button" data-billing="year" aria-pressed="false">Год</button>
+            </div>
+          </div>
+        </div>
+        <div class="pricing-grid">
+          <article class="plan" data-reveal style="--stagger: 0">
+            <div class="plan-head"><h3>Демо</h3><p>Для первого эпизода и знакомства с интерфейсом.</p></div>
+            <div class="price-line"><strong class="mono" data-price data-month="0" data-year="0">0</strong><span>₸</span><small data-price-period>/ мес.</small></div>
+            <a class="button button-outline" href="audit.html">Открыть демо <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <ul class="plan-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Один открытый эпизод</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Записи и калькулятор</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Экспорт выводов и журнала</li>
+            </ul>
+          </article>
+          <article class="plan plan-highlight" data-reveal style="--stagger: 1">
+            <div class="plan-head">
+              <div class="plan-title"><h3>Команда</h3><span class="plan-tag">Для команд</span></div>
+              <p>Концепция общего пространства для разбора эпизодов.</p>
+            </div>
+            <div class="price-line"><strong class="mono" data-price data-month="9900" data-year="99000">9 900</strong><span>₸</span><small data-price-period>/ мес.</small></div>
+            <button class="button button-primary" type="button" data-plan="team">Условия плана <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <ul class="plan-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Несколько открытых эпизодов</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Совместный разбор траекторий</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Сравнение результатов</li>
+            </ul>
+          </article>
+          <article class="plan" data-reveal style="--stagger: 2">
+            <div class="plan-head"><h3>Лаборатория</h3><p>Концепция набора инструментов для оценки сред.</p></div>
+            <div class="price-line"><strong class="mono" data-price data-month="24900" data-year="249000">24 900</strong><span>₸</span><small data-price-period>/ мес.</small></div>
+            <button class="button button-outline" type="button" data-plan="lab">Условия плана <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <ul class="plan-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Свои конфигурации эпизодов</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Подключение оценщика</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Сводки по сериям прогонов</li>
+            </ul>
+          </article>
+        </div>
+        <p class="sr-only" aria-live="polite" data-billing-announcement></p>
+      </div>
+    </section>
+
+    <!-- FAQ сохраняет нативное управление с клавиатуры и без скрипта. -->
+    <section class="section faq section-line" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div class="section-heading" data-reveal>
+          <p class="section-label">FAQ</p>
+          <h2 id="faq-title">Частые <span class="soft-text">вопросы</span></h2>
+          <p>Что нужно знать перед запуском открытого эпизода.</p>
+        </div>
+        <div class="faq-list" data-reveal>
+          <details class="faq-item">
+            <summary><span>Что можно сделать в открытом демо?</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-answer"><p>Запросить проводки, счета, платежи и курсы FX, открыть исходный документ, выполнить расчёт и оформить вывод. После отправки доступны JSON и журнал действий.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span>Нужны ли модель, GPU или API-ключ?</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-answer"><p>Демо запускается локально из HTML-файла. Действия выполняются вручную в интерфейсе. Для запуска достаточно браузера.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span>Чьи финансовые данные в эпизоде?</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-answer"><p>Компания, документы, движения средств и суммы вымышлены. Синтетический набор содержит связанные проводки и первичные документы.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span>Когда появляются F1 и награда?</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-answer"><p>Их рассчитывает отдельный оценщик после завершения прогона. У локального демо эти поля станут доступны после интеграции с оценщиком.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span>Что происходит при исчерпании бюджета?</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="faq-answer"><p>Если сотый шаг занят исследованием, эпизод завершается с флагом <code>truncated</code>. Если сотый шаг занят отправкой, система фиксирует выводы и выставляет <code>terminated</code>.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Финальный призыв ведёт в тот же открытый эпизод. -->
+    <section class="section final-section" aria-labelledby="final-title">
+      <div class="container">
+        <div class="final-card" data-reveal>
+          <div class="final-mesh" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="final-grid" aria-hidden="true"></div>
+          <div class="final-content">
+            <span class="final-icon">
+              <svg class="icon" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-mark"/></svg>
+            </span>
+            <h2 id="final-title">Откройте первый <span class="gradient-text">эпизод</span></h2>
+            <p>Запросите проводки, найдите первичный документ и соберите вывод с доказательствами.</p>
+            <a class="button button-primary button-prominent" href="audit.html" data-magnetic data-burst>
+              Открыть демо <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал связывает страницы и показывает долю прокрутки. -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="wordmark" href="#top" aria-label="Genesis Audit Lab — начало страницы">
+            <span class="wordmark-symbol"><svg class="icon" viewBox="0 0 40 40" aria-hidden="true"><use href="#i-mark"/></svg></span>
+            <span class="wordmark-text">Genesis<span>Audit Lab</span></span>
+          </a>
+          <p>Воспроизводимая среда для экспериментов с ИИ-агентами в финансовом аудите.</p>
+        </div>
+        <nav aria-label="Продукт">
+          <h2>Продукт</h2>
+          <a class="text-link" href="#features">Возможности</a>
+          <a class="text-link" href="#workflow">Как работает</a>
+          <a class="text-link" href="#pricing">Доступ</a>
+        </nav>
+        <nav aria-label="Демонстрация">
+          <h2>Демонстрация</h2>
+          <a class="text-link" href="#demo">Превью</a>
+          <a class="text-link" href="audit.html">Рабочая среда</a>
+          <a class="text-link" href="audit.html#trajectory">Траектория</a>
+        </nav>
+        <nav aria-label="Справка">
+          <h2>Справка</h2>
+          <a class="text-link" href="#faq">FAQ</a>
+          <a class="text-link" href="audit.html#case">Условия кейса</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>Genesis FinTech · Демонстрационный проект</span>
+        <a class="back-top" href="#top" aria-label="К началу страницы">
+          <svg class="progress-ring" viewBox="0 0 48 48" aria-hidden="true">
+            <circle class="ring-track" cx="24" cy="24" r="21"/>
+            <circle class="ring-value" cx="24" cy="24" r="21" pathLength="1" data-scroll-ring/>
+          </svg>
+          <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно информирует об условиях примера. -->
+  <dialog class="info-dialog" id="plan-dialog" aria-labelledby="plan-dialog-title" aria-describedby="plan-dialog-description">
+    <div class="dialog-body">
+      <div class="dialog-heading">
+        <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-lab"/></svg></span>
+        <button type="button" class="button icon-button" data-close-plan aria-label="Закрыть условия" autofocus>
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <h2 id="plan-dialog-title">Условия плана</h2>
+      <p id="plan-dialog-description"></p>
+      <p class="dialog-price mono" data-modal-price></p>
+      <a class="button button-primary" href="audit.html">Попробовать открытое демо <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </dialog>
+  <p class="sr-only" role="status" aria-live="polite" data-live-message></p>
+</body>
+</html>
+
