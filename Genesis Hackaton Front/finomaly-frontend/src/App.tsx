@@ -1,265 +1,174 @@
-import { useRef, useState } from 'react'
-import type { FormEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Workspace, Results } from './AuditScreens'
-import { AuditIllustration, Icon, StatCard } from './Visuals'
-import finomalyLogo from './assets/brand/finomaly-logo.svg'
-import { SCENARIOS, STEP_BUDGET, episodeStatus, periodLabel } from './auditTypes'
-import type { Episode, EpisodeConfig, Scenario } from './auditTypes'
+import { Dashboard, initialConfig } from './Dashboard'
+import { ShellTools } from './ShellTools'
+import { WelcomeExperience } from './WelcomeExperience'
+import { Icon } from './Visuals'
+import type { EpisodeConfig } from './auditTypes'
 import { auditMode } from './auditClient'
 import { useAuditRun } from './useAuditRun'
+import { useLabMotion } from './useLabMotion'
+import logo from './assets/brand/finomaly-logo.svg'
 
-const screens = {
-  dashboard: 'Dashboard',
-  workspace: 'Audit Workspace',
-  results: 'Results',
+const sections = {
+  dashboard: {name: 'Dashboard', icon: 'dashboard', title: 'Панель управления'},
+  workspace: {name: 'Audit Workspace', icon: 'audit', title: 'Рабочая область'},
+  results: {name: 'Results', icon: 'results', title: 'Результаты аудита'},
 } as const
+type Screen = keyof typeof sections
+const screens = Object.keys(sections) as Screen[]
 
-type Screen = keyof typeof screens
-
-const descriptions: Record<Screen, string> = {
-  dashboard: 'Запустите аудит финансовых записей и проследите, как агент собирает доказательства.',
-  workspace: 'Проводки, документы и действия агента в текущем эпизоде.',
-  results: 'Выводы, доказательства и метрики завершённого прогона.',
+function Brand() {
+  return <img className="lab-logo" src={logo} alt="FINOMALY" width="276" height="64"/>
 }
 
-type ConfigDraft = Omit<EpisodeConfig, 'seed'> & { seed: string }
-
-const defaultConfig: ConfigDraft = {
-  companyName: 'Demo Company',
-  scenario: 'duplicate_invoice',
-  seed: '42',
-  baseCurrency: 'KZT',
-  periodStart: '2026-10-01',
-  periodEnd: '2026-10-31',
+function Environment() {
+  return <div className="lab-environment"><span className="env-icon"><Icon name="server"/></span>
+    <div><strong>{auditMode === 'api' ? 'Режим API' : 'Локальное демо'}</strong><small>Синтетические данные</small></div></div>
 }
 
-const scenarioOptions = Object.keys(SCENARIOS) as Scenario[]
-
-function RunSummary({ episode, onNavigate }: {
-  episode: Episode | null
-  onNavigate: (screen: Screen) => void
-}) {
-  const completed = episode ? episode.status !== 'running' : false
-  const phase = completed ? 3 : episode ? 1 : 0
-  const stages = [
-    { title: 'Настройка эпизода', detail: 'Компания и сценарий', icon: 'layers' },
-    {
-      title: 'Пошаговый аудит',
-      detail: episode ? `Осталось ${episode.stepsRemaining} из ${episode.stepBudget} шагов` : 'Записи и действия агента',
-      icon: 'audit',
-    },
-    { title: 'Результат', detail: 'Доказательства и метрики', icon: 'results' },
-  ] as const
-
-  return (
-    <section className="card run-card" aria-labelledby="run-title">
-      <div className="panel-title">
-        <h2 id="run-title">Текущий прогон</h2>
-        <span className="status" data-status={episode?.status ?? 'idle'}>
-          {episode ? episodeStatus[episode.status] : 'Ожидает запуска'}
-        </span>
-      </div>
-      {episode ? (
-        <div className="run-context">
-          <p className="company-name">{episode.config.companyName}</p>
-          <p className="context-line"><code>{episode.id}</code> <span>{periodLabel(episode.config)} · {episode.config.baseCurrency}</span></p>
-          <p className="context-line"><code>seed {episode.config.seed}</code></p>
-        </div>
-      ) : null}
-      <ol className="run-stages" aria-label="Этапы прогона">
-        {stages.map((stage, index) => (
-          <li key={stage.title} data-stage={index < phase ? 'done' : index === phase ? 'current' : 'pending'}
-            aria-current={index === phase ? 'step' : undefined}>
-            <span className="stage-icon"><Icon name={index < phase ? 'check' : stage.icon} /></span>
-            <div><strong>{stage.title}</strong><span>{stage.detail}</span></div>
-          </li>
-        ))}
-      </ol>
-      {episode ? (
-        <button className="secondary" type="button" onClick={() => onNavigate(completed ? 'results' : 'workspace')}>
-          {completed ? 'Открыть результаты' : 'Продолжить аудит'}<Icon name="arrow" />
-        </button>
-      ) : null}
-    </section>
-  )
-}
-
-function Dashboard({ episode, config, busy, onConfig, onStart, onNavigate }: {
-  episode: Episode | null
-  config: ConfigDraft
-  busy: boolean
-  onConfig: (config: ConfigDraft) => void
-  onStart: (config: EpisodeConfig) => void
-  onNavigate: (screen: Screen) => void
-}) {
-  const seed = Number(config.seed)
-  const wrongPeriod = Boolean(config.periodStart && config.periodEnd && config.periodStart > config.periodEnd)
-  const canStart = Boolean(config.companyName.trim() && config.seed && config.periodStart && config.periodEnd) &&
-    !wrongPeriod && Number.isInteger(seed) && seed >= 0 && seed <= 4294967295
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (canStart && !busy) onStart({ ...config, companyName: config.companyName.trim(), seed })
-  }
-
-  return (
-    <>
-      <section className="overview" aria-label="Сводка">
-        <StatCard icon="steps" label="Бюджет эпизода">{episode?.stepBudget ?? STEP_BUDGET} <small>шагов</small></StatCard>
-        <StatCard icon="layers" tone="cyan" label="Доступные сценарии">{scenarioOptions.length}</StatCard>
-        <StatCard icon="file" tone="rose" label="Текущий эпизод">
-          {episode ? <code>{episode.id}</code> : <span className="stat-empty">Нет запуска</span>}
-        </StatCard>
-      </section>
-
-      <div className="dashboard-grid">
-        <section className="card setup-card" aria-labelledby="setup-title">
-          <div className="panel-title">
-            <h2 id="setup-title">Настройки эпизода</h2>
-            <span className="icon-tile compact" data-tone="violet"><Icon name="layers" /></span>
-          </div>
-          <form onSubmit={handleSubmit} className="setup-form">
-            <div className="field">
-              <label htmlFor="company">Название компании</label>
-              <input
-                id="company"
-                required
-                maxLength={80}
-                value={config.companyName}
-                onChange={(event) => onConfig({ ...config, companyName: event.target.value })}
-              />
-            </div>
-            <fieldset className="scenario-field">
-              <legend>Сценарий</legend>
-              <div className="scenario-options">
-                {scenarioOptions.map((value) => (
-                  <label className="scenario-option" key={value}>
-                    <input type="radio" name="scenario" value={value} checked={config.scenario === value}
-                      onChange={() => onConfig({ ...config, scenario: value })} />
-                    <Icon name={value === 'clean' ? 'check' : value === 'duplicate_invoice' ? 'duplicate' : 'layers'} />
-                    <span><strong>{SCENARIOS[value].title}</strong><small>{SCENARIOS[value].description}</small></span>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-            <div className="config-fields">
-              <div className="field">
-                <label htmlFor="seed">Seed</label>
-                <input id="seed" type="number" min="0" max="4294967295" step="1" required value={config.seed}
-                  onChange={(event) => onConfig({ ...config, seed: event.target.value })} />
-              </div>
-              <div className="field">
-                <label htmlFor="base-currency">Базовая валюта</label>
-                <select id="base-currency" value={config.baseCurrency}
-                  onChange={(event) => onConfig({ ...config, baseCurrency: event.target.value })}>
-                  <option value="KZT">KZT</option><option value="USD">USD</option><option value="EUR">EUR</option>
-                </select>
-              </div>
-              <div className="field">
-                <label htmlFor="period-start">Начало периода</label>
-                <input id="period-start" type="date" min="1900-01-01" max="9998-12-31" required value={config.periodStart}
-                  onChange={(event) => onConfig({ ...config, periodStart: event.target.value })} />
-              </div>
-              <div className="field">
-                <label htmlFor="period-end">Конец периода</label>
-                <input id="period-end" type="date" min="1900-01-01" max="9998-12-31" required value={config.periodEnd}
-                  aria-invalid={wrongPeriod || undefined} aria-describedby={wrongPeriod ? 'period-error' : undefined}
-                  onChange={(event) => onConfig({ ...config, periodEnd: event.target.value })} />
-              </div>
-            </div>
-            {wrongPeriod ? <p className="input-warning" id="period-error">Конец периода должен быть не раньше начала.</p> : null}
-            <div className="form-footer">
-              <button className="primary" type="submit" disabled={!canStart || busy}>
-                <Icon name="play" />
-                {busy ? 'Ожидание…' : episode ? 'Запустить новый аудит' : 'Запустить аудит'}
-                <Icon name="arrow" />
-              </button>
-              {episode ? <small>Новый запуск заменит текущий эпизод.</small> : null}
-            </div>
-          </form>
-        </section>
-        <RunSummary episode={episode} onNavigate={onNavigate} />
-      </div>
-    </>
-  )
-}
+const glossary = [
+  ['Эпизод', 'Один аудит виртуальной компании. Например, вы задаёте октябрь, тенге и сценарий дублирования. Среда готовит документы и проводки для этой проверки.'],
+  ['Бюджет шагов', 'Лимит действий агента в одном эпизоде. В локальном демо после первого запроса к документам остаётся 99 шагов из 100. Просмотр документов человеком бюджет не расходует.'],
+  ['Счёт и проводка', 'Счёт фиксирует, сколько нужно заплатить. Проводка фиксирует операцию в учёте. Если две проводки начисляют одну сумму по одному счёту, агент может проверить их на дублирование.'],
+  ['Seed', 'Число для повтора эксперимента. Одинаковые настройки и seed дают один и тот же набор записей. Это позволяет сравнивать действия разных агентов на одинаковом примере.'],
+  ['Рабочая область и результаты', 'В Audit Workspace можно читать записи, наблюдать за шагами агента и открывать параметры каждого запроса. После завершения в Results появляются выводы, доказательства и оценка.'],
+]
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('dashboard')
-  const [config, setConfig] = useState<ConfigDraft>(defaultConfig)
   const run = useAuditRun()
-  const { episode } = run
-  const focusOnNavigate = useRef(false)
+  const {episode} = run
+  const [screen, setScreen] = useState<Screen>(() => {
+    if (auditMode === 'demo' && episode) {
+      try {
+        const last = sessionStorage.getItem('finomaly.demo.screen')
+        if (last === 'workspace' || last === 'results') return last
+      } catch { /* Закрытое хранилище не мешает работе панели. */ }
+    }
+    return 'dashboard'
+  })
+  const [config, setConfig] = useState(() => episode ? {...episode.config, seed: String(episode.config.seed)} : initialConfig)
+  const [tourReplay, setTourReplay] = useState(0)
+  const menu = useRef<HTMLDialogElement>(null)
+  const guide = useRef<HTMLDialogElement>(null)
+  const main = useRef<HTMLElement>(null)
+  const heading = useRef<HTMLHeadingElement>(null)
+  const scrollProgress = useRef<HTMLSpanElement>(null)
+  useLabMotion(main, screen)
 
   function navigate(next: Screen) {
-    if (next === screen) return
-    focusOnNavigate.current = true
-    setScreen(next)
+    menu.current?.close()
+    if (next !== screen) setScreen(next)
+    requestAnimationFrame(() => {
+      window.scrollTo({top: 0, behavior: 'instant'})
+      heading.current?.focus({preventScroll: true})
+    })
   }
 
-  async function startAudit(input: EpisodeConfig) {
-    if (await run.start(input)) navigate('workspace')
+  function configure() {
+    setScreen('dashboard')
+    requestAnimationFrame(() => {
+      document.getElementById('company')?.focus({preventScroll: true})
+      document.getElementById('configuration')?.scrollIntoView({behavior: 'instant', block: 'start'})
+    })
+  }
+  function replay() {
+    menu.current?.close()
+    setTourReplay(key => key + 1)
+  }
+  function openGuide() {
+    menu.current?.close()
+    guide.current?.showModal()
+  }
+  async function start(input: EpisodeConfig, autoplay = false) {
+    if (await run.start(input)) {
+      navigate('workspace')
+      if (autoplay) run.play()
+    }
   }
 
-  return (
-    <div className="shell">
-      <a className="skip-link" href="#main">К содержанию</a>
-      <aside className="sidebar">
-        <div className="brand">
-          <img src={finomalyLogo} className="brand-logo" alt="FINOMALY" width={276} height={64} />
-          <span className="brand-caption">Симулятор аудита</span>
-        </div>
-        <nav aria-label="Разделы приложения">
-          {(Object.keys(screens) as Screen[]).map((key) => (
-            <button
-              key={key}
-              type="button"
-              aria-current={screen === key ? 'page' : undefined}
-              onClick={() => navigate(key)}
-            >
-              <Icon name={key === 'workspace' ? 'audit' : key} />
-              <span>{screens[key]}</span>
-            </button>
-          ))}
-        </nav>
-        <div className="mode"><span aria-hidden="true" /><div><strong>{auditMode === 'api' ? 'Режим API' : 'Локальное демо'}</strong><small>Синтетические данные</small></div></div>
-      </aside>
-      <main id="main" tabIndex={-1}>
-        <header className={screen === 'dashboard' ? 'page-heading dashboard-heading' : 'page-heading'}>
-          <div className="heading-copy">
-            {screen === 'dashboard' ? <p className="heading-context"><Icon name="terminal" /> Среда для FinTech-команд</p> : null}
-            <h1
-              key={screen}
-              tabIndex={-1}
-              ref={(heading) => {
-                if (heading && focusOnNavigate.current) {
-                  heading.focus()
-                  focusOnNavigate.current = false
-                }
-              }}
-            >
-              {screens[screen]}
-            </h1>
-            <p className="heading-description">{descriptions[screen]}</p>
-          </div>
-          {screen === 'dashboard' ? <AuditIllustration /> : null}
-        </header>
-        {run.error ? <p className="request-error" role="alert">{run.error}</p> : null}
-        {screen === 'dashboard' ? (
-          <Dashboard episode={episode} config={config} busy={run.busy} onConfig={setConfig} onStart={startAudit} onNavigate={navigate} />
-        ) : screen === 'workspace' ? (
-          <Workspace
-            key={episode?.id}
-            episode={episode}
-            onStep={run.nextStep}
-            playback={run}
-            onDashboard={() => navigate('dashboard')}
-            onResults={() => navigate('results')}
-          />
-        ) : (
-          <Results episode={episode} mode={auditMode} onBack={() => navigate(episode ? 'workspace' : 'dashboard')} />
-        )}
+  useEffect(() => {
+    document.title = sections[screen].title + ' · FINOMALY'
+    if (auditMode === 'demo') {
+      try { sessionStorage.setItem('finomaly.demo.screen', screen) } catch { /* Необязательная настройка. */ }
+    }
+  }, [screen])
+
+  useEffect(() => {
+    let frame = 0
+    function paint() {
+      const span = document.documentElement.scrollHeight - window.innerHeight
+      scrollProgress.current?.style.setProperty('transform', `scaleX(${span > 1 ? Math.min(1, window.scrollY / span) : 0})`)
+      frame = 0
+    }
+    function update() { if (!frame) frame = requestAnimationFrame(paint) }
+    const observer = new ResizeObserver(update)
+    if (main.current) observer.observe(main.current)
+    window.addEventListener('scroll', update, {passive: true})
+    window.addEventListener('resize', update)
+    update()
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  function navigation() {
+    return <>
+      <div className="rail-group">
+        <p className="rail-label">Рабочая среда</p>
+        <nav aria-label="Разделы приложения">{screens.map(s => <button type="button" key={s} aria-current={s === screen ? 'page' : undefined}
+          onClick={() => navigate(s)}><Icon name={sections[s].icon}/><span>{sections[s].name}</span></button>)}</nav>
+      </div>
+      <div className="rail-group rail-help">
+        <p className="rail-label">Справка</p>
+        <button type="button" onClick={openGuide}><Icon name="book"/>Гид по аудиту</button>
+        <button type="button" onClick={replay}><Icon name="circlePlay"/>Тур по продукту</button>
+      </div>
+    </>
+  }
+
+  return <div className="lab-shell">
+    <a className="skip-link" href="#main">К содержанию</a>
+    <aside className="lab-rail">
+      <button className="rail-brand" type="button" aria-label="FINOMALY — на Dashboard" onClick={() => navigate('dashboard')}><Brand/></button>
+      {navigation()}<Environment/>
+    </aside>
+    <div className="lab-page">
+      <header className="lab-topbar">
+        <button className="mobile-menu-toggle" type="button" aria-haspopup="dialog" aria-label="Открыть меню" onClick={() => menu.current?.showModal()}><Icon name="menu"/></button>
+        <div className="lab-breadcrumb"><Icon name="layers"/><span>Лаборатория</span><b aria-hidden="true">/</b><strong>{sections[screen].name}</strong></div>
+        <span className="mobile-brand" aria-label="FINOMALY">Finomaly</span>
+        <ShellTools episode={episode} error={run.error} onNavigate={navigate} onConfigure={configure} onTour={replay}/>
+        <span aria-hidden="true" className="lab-scroll-progress" ref={scrollProgress}/>
+      </header>
+      <main id="main" ref={main} tabIndex={-1} className="lab-main" data-page={screen}>
+        {run.error && <p className="request-error" role="alert">{run.error}</p>}
+        {screen === 'dashboard' ? <Dashboard config={config} episode={episode} busy={run.busy} onConfig={setConfig} onStart={start}
+          onConfigure={configure} onContinue={() => navigate(episode?.status === 'running' ? 'workspace' : 'results')} headingRef={heading}/> :
+          <>
+            <header className="work-heading"><h1 tabIndex={-1} ref={heading}>{sections[screen].title}</h1>
+              <p>{screen === 'workspace' ? 'Документы, проводки и история действий ИИ-аудитора.' : 'Выводы агента, подтверждающие записи и оценка эпизода.'}</p></header>
+            {screen === 'workspace' ? <Workspace key={episode?.id} episode={episode} onStep={run.nextStep} playback={run}
+              onDashboard={() => navigate('dashboard')} onResults={() => navigate('results')}/> :
+              <Results episode={episode} mode={auditMode} onBack={() => navigate(episode ? 'workspace' : 'dashboard')}/>}
+          </>}
       </main>
     </div>
-  )
+    <dialog ref={menu} className="lab-menu-dialog" aria-label="Меню FINOMALY" onClick={e => {if (e.target === e.currentTarget) e.currentTarget.close()}}>
+      <div className="menu-content"><div className="dialog-bar"><Brand/>
+        <button type="button" className="lab-icon-button" aria-label="Закрыть меню" onClick={() => menu.current?.close()}><Icon name="close"/></button>
+      </div>{navigation()}<Environment/></div>
+    </dialog>
+    <dialog ref={guide} className="lab-guide" aria-labelledby="guide-title" onClick={e => {if (e.target === e.currentTarget) e.currentTarget.close()}}>
+      <div className="guide-content"><div className="dialog-bar"><span className="guide-symbol"><Icon name="book"/></span>
+        <button type="button" className="lab-icon-button" aria-label="Закрыть гид" onClick={() => guide.current?.close()}><Icon name="close"/></button></div>
+        <h2 id="guide-title">Гид по аудиту</h2><p>Пять понятий, которые помогут провести первую проверку.</p>
+        {glossary.map(([term, explanation], i) => <details key={term} open={i === 0 ? true : undefined}><summary>{term}<Icon name="chevron"/></summary><p>{explanation}</p></details>)}
+      </div>
+    </dialog>
+    <WelcomeExperience replayKey={tourReplay} resuming={Boolean(episode)}/>
+  </div>
 }

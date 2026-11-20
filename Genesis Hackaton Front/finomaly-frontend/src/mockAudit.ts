@@ -1,8 +1,20 @@
-import { SCENARIOS, STEP_BUDGET } from './auditTypes'
-import type { AuditStep, DocumentRecord, Episode, EpisodeConfig, ErrorType, Finding, LedgerRecord, RecordRef } from './auditTypes'
+import { currencyScale, SCENARIOS, STEP_BUDGET } from './auditTypes'
+import type { AuditStep, BaseCurrency, DocumentRecord, Episode, EpisodeConfig, ErrorType, Finding, LedgerRecord, RecordRef } from './auditTypes'
 
 const INVOICE = 'INV-019'
 const DAY = 86400000
+
+// Синтетические цены и курсы для воспроизводимых демо-сценариев.
+const DEMO_CURRENCY: Record<BaseCurrency, { invoice: number; rate: number; wrongRate: number }> = {
+  KZT: { invoice: 125000, rate: 500, wrongRate: 510 },
+  USD: { invoice: 1250, rate: 1.125, wrongRate: 1.15 },
+  EUR: { invoice: 1250, rate: 1.125, wrongRate: 1.15 },
+  GBP: { invoice: 1000, rate: .8, wrongRate: .82 },
+  CHF: { invoice: 1100, rate: .88, wrongRate: .9 },
+  CNY: { invoice: 9000, rate: 7.2, wrongRate: 7.35 },
+  JPY: { invoice: 187500, rate: 150, wrongRate: 153 },
+  UZS: { invoice: 15625000, rate: 12500, wrongRate: 12750 },
+}
 
 function offsetDate(date: string, days: number) {
   return new Date(Date.parse(date + 'T00:00:00Z') + days * DAY).toISOString().slice(0, 10)
@@ -16,13 +28,16 @@ function buildFixture(config: EpisodeConfig) {
   const outsidePeriod = offsetDate(config.periodEnd, 1)
   const currency = config.baseCurrency
   const counterparty = ['Orion Services', 'Vector Supply', 'Delta Systems'][config.seed % 3]
-  const amount = (currency === 'KZT' ? 12500000 : 125000) + (config.seed % 997 - 42) * 100
+  const { invoice, rate, wrongRate } = DEMO_CURRENCY[currency]
   const foreign = currency === 'USD' ? 'EUR' : 'USD'
-  const rate = currency === 'KZT' ? 500 : 1.125
-  const wrongRate = currency === 'KZT' ? 510 : 1.15
-  const foreignMinor = Math.round(amount * .6 / rate)
-  const expectedSecond = has('fx_rate') ? Math.round(foreignMinor * rate) : Math.round(amount * .6)
-  const converted = has('fx_rate') ? Math.round(foreignMinor * wrongRate) : expectedSecond
+  const baseScale = currencyScale(currency)
+  const foreignScale = currencyScale(foreign)
+  const amount = (invoice + config.seed % 997 - 42) * baseScale
+  const unconvertedSecond = Math.round(amount * .6)
+  // Курсы заданы в основных единицах, а проводки и документы хранят минимальные.
+  const foreignMinor = Math.round(unconvertedSecond * foreignScale / (rate * baseScale))
+  const expectedSecond = has('fx_rate') ? Math.round(foreignMinor * rate * baseScale / foreignScale) : unconvertedSecond
+  const converted = has('fx_rate') ? Math.round(foreignMinor * wrongRate * baseScale / foreignScale) : expectedSecond
   const allocated = has('partial_allocation') ? Math.round(converted * .8) : converted
   const first = amount - expectedSecond
   const shared = { invoiceId: INVOICE, counterparty }

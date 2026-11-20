@@ -11,11 +11,24 @@ export const SCENARIOS = {
 export type Scenario = keyof typeof SCENARIOS
 export type ErrorType = 'duplicate_invoice' | 'partial_allocation' | 'fx_rate' | 'period_cutoff'
 
+export const BASE_CURRENCIES = {
+  KZT: 'Казахстанский тенге',
+  USD: 'Доллар США',
+  EUR: 'Евро',
+  GBP: 'Фунт стерлингов',
+  CHF: 'Швейцарский франк',
+  CNY: 'Китайский юань',
+  JPY: 'Японская иена',
+  UZS: 'Узбекский сум',
+} as const
+
+export type BaseCurrency = keyof typeof BASE_CURRENCIES
+
 export type EpisodeConfig = {
   companyName: string
   scenario: Scenario
   seed: number
-  baseCurrency: string
+  baseCurrency: BaseCurrency
   periodStart: string
   periodEnd: string
 }
@@ -94,14 +107,23 @@ export const episodeStatus: Record<Episode['status'], string> = {
 
 export const periodLabel = (config: EpisodeConfig) => `${config.periodStart} — ${config.periodEnd}`
 
-const amountFormatters = new Map<string, Intl.NumberFormat>()
+const amountFormats = new Map<string, { formatter: Intl.NumberFormat; scale: number }>()
+
+function getAmountFormat(currency: string) {
+  let format = amountFormats.get(currency)
+  if (!format) {
+    const formatter = new Intl.NumberFormat('ru-RU', { style: 'currency', currency })
+    format = { formatter, scale: 10 ** (formatter.resolvedOptions().maximumFractionDigits ?? 2) }
+    amountFormats.set(currency, format)
+  }
+  return format
+}
+
+export function currencyScale(currency: string) {
+  return getAmountFormat(currency).scale
+}
 
 export function formatAmount(amountMinor: number, currency: string) {
-  let formatter = amountFormatters.get(currency)
-  if (!formatter) {
-    formatter = new Intl.NumberFormat('ru-RU', { style: 'currency', currency })
-    amountFormatters.set(currency, formatter)
-  }
-  const digits = formatter.resolvedOptions().maximumFractionDigits ?? 2
-  return formatter.format(amountMinor / 10 ** digits)
+  const { formatter, scale } = getAmountFormat(currency)
+  return formatter.format(amountMinor / scale)
 }

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { startAudit, stepAudit } from './auditClient'
+import { auditMode, startAudit, stepAudit } from './auditClient'
+import { rememberDemo, restoreDemo } from './demoSession'
 import type { Episode, EpisodeConfig } from './auditTypes'
 
 export function useAuditRun() {
-  const [episode, setEpisode] = useState<Episode | null>(null)
+  const [episode, setEpisode] = useState<Episode | null>(() => auditMode === 'demo' ? restoreDemo() : null)
   const [busy, setBusy] = useState(false)
   const [playing, setPlaying] = useState(false)
   const [speed, setSpeed] = useState(1)
@@ -23,6 +24,7 @@ export function useAuditRun() {
     setError(null)
     try {
       const next = await action()
+      if (auditMode === 'demo') rememberDemo(next)
       setEpisode(next)
       if (next.status !== 'running') pause()
       return true
