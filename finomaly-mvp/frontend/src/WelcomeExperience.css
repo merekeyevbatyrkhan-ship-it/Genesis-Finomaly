@@ -1,0 +1,236 @@
+/* Кинетическая заставка. Панель приложения уже отрисована под двумя створками. */
+.welcome-loader,
+.welcome-tour {
+  --welcome-paper: #f2f4ff;
+  --welcome-muted: #b8bdd3;
+  --welcome-rule: rgb(213 219 255 / 22%);
+  --welcome-accent: #9ceaf1;
+  --welcome-display: 'Inter Tight', Inter, system-ui, sans-serif;
+  --welcome-mono: 'JetBrains Mono', ui-monospace, monospace;
+  color-scheme: dark;
+  color: var(--welcome-paper);
+  font: 400 1rem/1.45 Inter, system-ui, sans-serif;
+}
+
+.welcome-loader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.welcome-loader[open] { display: grid; place-items: center; }
+.welcome-loader::backdrop { background: transparent; }
+html:has(.welcome-loader[open], .welcome-tour[open][data-manual='true']) { overflow: hidden; scrollbar-gutter: stable; }
+
+.welcome-curtain {
+  position: absolute;
+  inset-block: 0;
+  width: calc(50% + 1px);
+  overflow: hidden;
+  background: #0a0e1a;
+}
+
+.welcome-curtain::before,
+.welcome-curtain::after {
+  position: absolute;
+  inset-block: 0;
+  width: 100vw;
+  pointer-events: none;
+  content: '';
+}
+
+.welcome-curtain::before {
+  background:
+    radial-gradient(ellipse at 50% 55%, rgb(100 79 177 / 20%), transparent 34%),
+    radial-gradient(ellipse at 74% 34%, rgb(61 100 140 / 13%), transparent 41%),
+    radial-gradient(ellipse at 17% 95%, rgb(56 41 103 / 22%), transparent 52%),
+    #0a0e1a;
+}
+
+.welcome-curtain::after {
+  opacity: .039;
+  background-image: url('./assets/brand/grain.png');
+  background-size: 128px;
+}
+
+.welcome-curtain--left, .welcome-curtain--left::before, .welcome-curtain--left::after { left: 0; }
+.welcome-curtain--right, .welcome-curtain--right::before, .welcome-curtain--right::after { right: 0; }
+
+.welcome-core { position: relative; width: min(82vw, 41rem); }
+.welcome-loader:not([data-signaling]) .welcome-core { visibility: hidden; }
+.welcome-signal { width: min(60%, 17rem); height: auto; color: #d7d4f8; }
+.welcome-wordmark {
+  display: flex;
+  justify-content: center;
+  margin: clamp(10px, 1.5vw, 22px) 0 clamp(12px, 1.5vw, 24px);
+  font: 740 clamp(2.75rem, 9.65vw, 7.85rem)/1 var(--welcome-display);
+  letter-spacing: -.055em;
+}
+.welcome-wordmark > span { display: block; padding-inline-end: .025em; clip-path: inset(0 -.08em -.04em); }
+.welcome-letter { display: block; font-style: normal; }
+.welcome-rule { height: 1px; background: linear-gradient(90deg, transparent, #b6aaff 20%, #8adddf 75%, transparent); }
+.welcome-meter {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px 12px;
+  width: min(78%, 18rem);
+  margin: clamp(25px, 4vw, 46px) auto 0;
+  color: var(--welcome-muted);
+  font: 500 .64rem/1.5 var(--welcome-mono);
+  text-align: start;
+}
+.welcome-meter b { color: #dbebf8; font-weight: 500; font-variant-numeric: tabular-nums; }
+.welcome-meter > div { grid-column: 1 / -1; height: 2px; overflow: hidden; background: var(--welcome-rule); }
+.welcome-meter > div > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #997bfb, var(--welcome-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.welcome-skip, .tour-icon-button, .tour-next, .tour-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: inherit;
+  background: transparent;
+  font: 550 .78rem/1.2 Inter, system-ui, sans-serif;
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+.welcome-skip {
+  position: absolute;
+  z-index: 1;
+  inset: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) auto auto;
+  padding: 0 13px;
+  border-color: var(--welcome-rule);
+  border-radius: 100px;
+  color: var(--welcome-muted);
+}
+.welcome-skip svg, .welcome-tour button svg { width: 15px; height: 15px; flex: none; }
+:is(.welcome-skip, .tour-next, .tour-text, .tour-icon-button):active { transform: scale(.96); }
+:is(.welcome-loader, .welcome-tour) button:focus-visible { outline: 2px solid #98e6f5; outline-offset: 2px; }
+
+/* Первый показ оставляет рабочую панель доступной. Повтор открывает тур по центру. */
+.welcome-tour {
+  position: fixed;
+  z-index: 90;
+  inset: auto max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) auto;
+  width: min(calc(100vw - 32px), 23.5rem);
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 16px 18px 12px;
+  border: 1px solid #4b4e68;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 100% 0, rgb(117 106 190 / 16%), transparent 60%),
+    #131726;
+  box-shadow: 0 24px 90px #05081370, 0 6px 14px #04081055, inset 0 1px rgb(255 255 255 / 7%);
+}
+.welcome-tour[open] { animation: tour-appear .38s cubic-bezier(.16, 1, .3, 1) both; }
+.welcome-tour[data-manual='true'] { inset: 0; width: min(calc(100vw - 32px), 28rem); margin: auto; }
+.welcome-tour::backdrop { background: rgb(4 7 17 / 66%); backdrop-filter: blur(5px); }
+@keyframes tour-appear { from { opacity: 0; transform: translateY(10px) scale(.985); } }
+.tour-head, .tour-controls, .tour-controls > div, .tour-kicker { display: flex; align-items: center; }
+.tour-head, .tour-controls { justify-content: space-between; gap: 10px; }
+.tour-kicker { gap: 5px; color: #d6d7ed; font-size: .75rem; font-weight: 550; }
+.tour-kicker img { display: block; }
+.tour-icon-button { min-width: 38px; min-height: 38px; padding: 0; color: var(--welcome-muted); }
+.tour-head > .tour-icon-button { margin: -4px -6px -4px 0; }
+.tour-chapters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-block: 0 4px; }
+.tour-chapters button { display: grid; align-content: center; height: 24px; padding: 0; border: 0; background: transparent; }
+.tour-chapters button > span { display: block; height: 3px; overflow: hidden; border-radius: 6px; background: #41455e; }
+.tour-chapters button[aria-current='step'] > span { background: #7d73ab; }
+.tour-chapters button i { display: block; height: 100%; background: #c2b6ff; transform-origin: left; }
+.tour-chapters button[data-past='true'] i { background: #9f96ce; }
+.tour-story { animation: tour-story-in .34s ease both; }
+@keyframes tour-story-in { from { opacity: .2; transform: translateY(3px); } }
+.tour-plate {
+  display: grid;
+  align-items: center;
+  min-height: 73px;
+  padding: 12px 14px;
+  border: 1px solid #3b405b;
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, rgb(17 19 38 / 88%), rgb(17 22 37 / 55%)),
+    repeating-linear-gradient(0deg, transparent 0 11px, #48507480 11px 12px),
+    repeating-linear-gradient(90deg, transparent 0 11px, #48507480 11px 12px);
+}
+.tour-configuration, .tour-invoice, .tour-action, .tour-links { display: flex; align-items: center; }
+.tour-configuration { gap: 10px; justify-content: space-between; }
+.tour-configuration > span, .tour-invoice small, .tour-action small {
+  display: block;
+  color: var(--welcome-muted);
+  font: 450 .64rem/1.4 var(--welcome-mono);
+}
+.tour-configuration b, .tour-invoice b, .tour-action b {
+  display: block;
+  margin-top: 4px;
+  color: #ecebfd;
+  font: 600 .95rem/1.15 var(--welcome-mono);
+}
+.tour-configuration i { width: 1px; height: 22px; background: var(--welcome-rule); }
+.tour-invoice, .tour-action { gap: 11px; }
+.tour-icon {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 39px;
+  border: 1px solid #6a6294;
+  border-radius: 7px;
+  color: #d4c9fa;
+  background: #302945;
+}
+.tour-icon svg { width: 18px; height: 18px; }
+.tour-invoice strong, .tour-cost { margin-left: auto; white-space: nowrap; color: #adf0f4; font: 550 .77rem/1.2 var(--welcome-mono); }
+.tour-cost { padding: 5px 7px; border: 1px solid #375765; border-radius: 5px; background: #182c39; }
+.tour-links { justify-content: center; }
+.tour-links span, .tour-links b { padding: 5px 9px; border: 1px solid #5c507d; border-radius: 5px; background: #29243d; font: 500 .69rem/1.1 var(--welcome-mono); }
+.tour-links i { position: relative; width: 24px; height: 1px; background: #938ab8; }
+.tour-links i::after { position: absolute; left: 100%; top: -8px; width: 7px; height: 16px; border-block: 1px solid #938ab8; border-left: 1px solid #938ab8; content: ''; }
+.tour-links > div { display: grid; gap: 3px; margin-left: 7px; }
+.tour-links b { border-color: #426675; color: #b3edf3; background: #192d3a; }
+.tour-caption { position: relative; min-height: 104px; padding-block: 13px 10px; }
+.tour-count { float: right; margin: 6px 0 3px 8px; color: #a9a6c5; font: 450 .64rem/1 var(--welcome-mono); }
+.tour-caption h2 { margin: 0 0 6px; color: var(--welcome-paper); font: 650 1.25rem/1.15 var(--welcome-display); letter-spacing: -.027em; }
+.tour-caption p { margin: 0; color: #c3c7d9; font-size: .8rem; line-height: 1.55; }
+.tour-controls { padding-top: 7px; border-top: 1px solid var(--welcome-rule); }
+.tour-controls > div { gap: 5px; }
+.tour-text { padding: 0 4px; color: var(--welcome-muted); }
+.tour-text svg { width: 12px; height: 12px; }
+.tour-next { min-width: 82px; padding-inline: 11px; border-color: #5b5577; background: #302c42; }
+@media (hover: hover) {
+  .welcome-skip:hover, .tour-icon-button:hover, .tour-text:hover { color: white; background: rgb(228 223 255 / 8%); }
+  .tour-next:hover { background: #46405d; }
+  .tour-chapters button:hover > span { background: #8c86a9; }
+}
+@media (min-width: 64rem) {
+  .welcome-tour[data-manual='false'] { inset-inline-end: 28px; inset-block-end: 24px; }
+  .welcome-skip { inset-inline-end: 32px; inset-block-start: 28px; }
+}
+@media (max-width: 23rem) {
+  .welcome-tour { inset-inline-end: 8px; inset-block-end: max(8px, env(safe-area-inset-bottom)); width: calc(100vw - 16px); padding-inline: 13px; }
+  .tour-caption { min-height: 112px; }
+  .tour-invoice { gap: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-tour[open], .tour-story { animation: none; }
+  .welcome-tour button { transition: none; }
+}

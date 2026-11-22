@@ -97,7 +97,6 @@ html:has(dialog[open]:modal) { overflow: hidden; }
 .hero-tour:hover { background:#ffffff10; }
 .hero-actions .icon { width:1.06rem; height:1.06rem; }
 .hero-actions .hero-tour { padding-inline:.05rem; }
-.hero-actions button:active { transform:scale(.97); }
 .terrain { position:relative; min-width:0; min-height:180px; isolation:isolate; }
 .terrain::before { content:''; position:absolute; inset:15% -8% 0; background:radial-gradient(ellipse at 62% 103%,#477a7b46,transparent 55%); pointer-events:none; }
 .terrain-viewport { position:absolute; inset:0 -2% 1% -3%; }

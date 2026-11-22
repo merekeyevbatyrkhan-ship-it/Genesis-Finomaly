@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "episode_id": "FIN-D78C203A123642236403",
+  "company_name": "Delta Fictional 59",
+  "base_currency": "JPY",
+  "period_start": "2025-01-01",
+  "period_end": "2025-03-31",
+  "timezone": "+03:00",
+  "ledger_count": 260,
+  "documents_count": 60,
+  "currency_minor_digits": {
+    "KZT": 2,
+    "USD": 2,
+    "EUR": 2,
+    "GBP": 2,
+    "CHF": 2,
+    "CNY": 2,
+    "JPY": 0,
+    "UZS": 2
+  },
+  "rounding": "ROUND_HALF_EVEN"
+}

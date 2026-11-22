@@ -121,7 +121,6 @@ html:has(.welcome-loader[open], .welcome-tour[open][data-manual='true']) { overf
   color: var(--welcome-muted);
 }
 .welcome-skip svg, .welcome-tour button svg { width: 15px; height: 15px; flex: none; }
-:is(.welcome-skip, .tour-next, .tour-text, .tour-icon-button):active { transform: scale(.96); }
 :is(.welcome-loader, .welcome-tour) button:focus-visible { outline: 2px solid #98e6f5; outline-offset: 2px; }
 
 /* Первый показ оставляет рабочую панель доступной. Повтор открывает тур по центру. */

@@ -76,7 +76,6 @@ code { font: 500 .86em/1.5 var(--mono); }
 }
 .primary { background: var(--loud); color: var(--primary-ink); }
 .primary:hover:enabled { box-shadow: 0 2px 18px color-mix(in srgb, var(--violet) 22%, transparent); }
-:is(.primary,.secondary):active:enabled { transform: scale(.98); }
 .secondary { border-color: var(--line-strong); color: var(--text); background: var(--soft); }
 .secondary:hover:enabled { border-color: var(--violet); }
 .field, .config-fields { display: grid; min-width: 0; }
@@ -86,5 +85,6 @@ code { font: 500 .86em/1.5 var(--mono); }
 .request-error { padding: .75rem 1rem; border: 1px solid var(--rose); border-radius: 9px; margin-bottom: 1rem; color: var(--rose); background: var(--surface); }
 @keyframes panel-in { from { opacity: .35; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {
+  [data-press-held=true] { filter:brightness(.88); }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

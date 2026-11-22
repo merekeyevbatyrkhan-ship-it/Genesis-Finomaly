@@ -9,10 +9,15 @@ const dateOK = (date: unknown): date is string => typeof date === 'string' &&
   /^\d{4}-\d{2}-\d{2}$/.test(date) && date >= '1900-01-01' && date <= '9998-12-31' &&
   new Date(date + 'T00:00:00Z').toISOString().slice(0, 10) === date
 
-function configOK(value: unknown): value is EpisodeConfig {
+// Управляющие символы и метки направления текста не должны попадать в название:
+// ими можно подменить подпись компании в отчёте.
+const unsafeLabel = /[\u0000-\u001F\u007F\u202A-\u202E\u2066-\u2069]/
+
+export function configOK(value: unknown): value is EpisodeConfig {
   if (!value || typeof value !== 'object') return false
   const c = value as Partial<EpisodeConfig>
-  return typeof c.companyName === 'string' && c.companyName.trim().length > 0 && c.companyName.length <= 80 &&
+  return typeof c.companyName === 'string' && c.companyName === c.companyName.trim() &&
+    c.companyName.length > 0 && c.companyName.length <= 80 && !unsafeLabel.test(c.companyName) &&
     typeof c.scenario === 'string' && Object.hasOwn(SCENARIOS, c.scenario) &&
     typeof c.baseCurrency === 'string' && Object.hasOwn(BASE_CURRENCIES, c.baseCurrency) &&
     typeof c.seed === 'number' && Number.isInteger(c.seed) && c.seed >= 0 && c.seed <= 4294967295 &&

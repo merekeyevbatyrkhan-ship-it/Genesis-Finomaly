@@ -1,0 +1,26 @@
+{
+  "rounding": "ROUND_HALF_EVEN",
+  "currency_minor_digits": {
+    "KZT": 2,
+    "USD": 2,
+    "EUR": 2,
+    "GBP": 2,
+    "CHF": 2,
+    "CNY": 2,
+    "JPY": 0,
+    "UZS": 2
+  },
+  "fx_date": "local calendar date of the payment timestamp",
+  "fx_rate": "base currency major units per source currency major unit",
+  "reporting_period": "inclusive local period_start through period_end",
+  "accrual_date": "local service_date in the invoice",
+  "invoice_allocation": "a receipt referencing an invoice is allocated in full, up to the amount due",
+  "unapplied_invoice_receipt": "suspense credit in booked base minor units",
+  "overpayment": "credit to settlement is valid and reversed by a refund",
+  "affected_ids": {
+    "duplicate_invoice": "receivables debit row IDs of both accruals",
+    "partial_allocation": "payment document ID",
+    "fx_rate": "payment document ID",
+    "period_cutoff": "receivables debit row ID of the mistimed accrual"
+  }
+}

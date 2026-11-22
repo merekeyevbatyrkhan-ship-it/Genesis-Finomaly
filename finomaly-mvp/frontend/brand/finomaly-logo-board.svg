@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="title desc">
+  <title id="title">FINOMALY</title>
+  <desc id="desc">Логотип FINOMALY на тёмном фоне с построечной сеткой.</desc>
+  <!-- Letterforms are outlined from the bundled Inter Tight, licensed under the SIL Open Font License. -->
+  <defs>
+    <linearGradient id="signal-gradient" gradientUnits="userSpaceOnUse" x1="12" y1="66" x2="84" y2="48">
+      <stop offset="0" stop-color="#7C5CFF"/>
+      <stop offset="1" stop-color="#00D9FF"/>
+    </linearGradient>
+    <radialGradient id="field" gradientUnits="userSpaceOnUse" cx="544" cy="467" r="458">
+      <stop stop-color="#161326"/>
+      <stop offset=".58" stop-color="#0F0E19"/>
+      <stop offset="1" stop-color="#0A0A0F"/>
+    </radialGradient>
+    <pattern id="grid" x="12" y="12" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0v24" stroke="#A49BC4" stroke-opacity=".15" fill="none"/>
+    </pattern>
+    <radialGradient id="grid-visibility" gradientUnits="userSpaceOnUse" cx="540" cy="504" r="394">
+      <stop stop-color="#FFF"/>
+      <stop offset=".63" stop-color="#FFF" stop-opacity=".69"/>
+      <stop offset="1" stop-color="#FFF" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="grid-mask" maskUnits="userSpaceOnUse" x="180" y="144" width="720" height="720">
+      <rect x="180" y="144" width="720" height="720" fill="url(#grid-visibility)"/>
+    </mask>
+    <filter id="point-glow" x="-90%" y="-90%" width="280%" height="280%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="line-glow" x="-22%" y="-80%" width="144%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="3.4"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1080" fill="#0A0A0F"/>
+  <rect width="1080" height="1080" fill="url(#field)"/>
+  <g mask="url(#grid-mask)">
+    <rect x="180" y="144" width="720" height="720" fill="url(#grid)"/>
+    <path d="M180 540h720M540 144v720" stroke="#8DA5CA" stroke-opacity=".22" fill="none"/>
+  </g>
+  <path d="M252 312v-24h24m528 0h24v24M252 744v24h24m528 0h24v-24" stroke="#74658F" stroke-opacity=".62" fill="none"/>
+
+  <g transform="translate(300 200) scale(5)">
+    <path d="M12 66h18c12 0 13-16 26-16h28" fill="none" stroke="url(#signal-gradient)" stroke-width="6.5" stroke-linecap="round" opacity=".25" filter="url(#line-glow)"/>
+    <circle cx="56" cy="25" r="7" fill="#00D9FF" opacity=".54" filter="url(#point-glow)"/>
+    <path d="M12 66h18c12 0 13-16 26-16h28" fill="none" stroke="url(#signal-gradient)" stroke-width="6.5" stroke-linecap="round"/>
+    <path d="M56 36v3m0 4v2" stroke="#75DCFA" stroke-opacity=".58" stroke-width="1.65" stroke-linecap="round"/>
+    <circle cx="56" cy="25" r="6.65" fill="#00D9FF"/>
+    <circle cx="56" cy="25" r="11" stroke="#73EBFF" stroke-opacity=".27" fill="none" stroke-width=".42"/>
+  </g>
+
+  <g fill="#F5F5F7">
+    <path d="M253.893 666V584H308.517V598.652H271.689V620.789H304.916V635.159H271.689V666Z"/>
+    <path d="M337.383 584V666H319.587V584Z"/>
+    <path d="M417.85 584V666H402.489L367.492 615.277H366.823V666H349.027V584H364.591L399.354 634.692H400.054V584Z"/>
+    <path d="M464.36 667.101Q453.446 667.101 444.7 662.159Q435.954 657.217 430.879 647.814Q425.804 638.411 425.804 625.055Q425.804 611.609 430.879 602.179Q435.954 592.748 444.7 587.824Q453.446 582.899 464.36 582.899Q475.294 582.899 484.003 587.824Q492.711 592.748 497.794 602.179Q502.877 611.609 502.877 625.055Q502.877 638.446 497.794 647.849Q492.711 657.252 484.003 662.176Q475.294 667.101 464.36 667.101ZM464.36 651.374Q470.592 651.374 475.174 648.344Q479.756 645.314 482.267 639.439Q484.778 633.563 484.778 625.055Q484.778 616.492 482.267 610.589Q479.756 604.686 475.174 601.656Q470.592 598.626 464.36 598.626Q458.164 598.626 453.572 601.656Q448.98 604.686 446.442 610.589Q443.903 616.492 443.903 625.055Q443.903 633.563 446.442 639.439Q448.98 645.314 453.572 648.344Q458.164 651.374 464.36 651.374Z"/>
+    <path d="M511.323 584H533.355L555.566 638.214H556.486L578.768 584H600.867V666H583.413V613.212H582.783L561.798 665.577H550.135L529.339 613.071H528.639V666H511.323Z"/>
+    <path d="M624.335 666H605.213L633.399 584H656.527L684.673 666H665.592L645.274 603.117H644.613ZM622.904 633.759H666.882V647.566H622.904Z"/>
+    <path d="M691.807 666V584H709.603V651.348H744.556V666Z"/>
+    <path d="M748.492 584H768.494L786.91 619.133H787.689L806.136 584H826.107L796.178 637.352V666H778.452V637.352Z"/>
+  </g>
+</svg>

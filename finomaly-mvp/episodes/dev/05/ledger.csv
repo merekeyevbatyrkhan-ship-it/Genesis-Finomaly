@@ -1,0 +1,281 @@
+row_id,transaction_id,timestamp,account,entry_kind,debit_minor,credit_minor,currency,entity_id,counterparty,invoice_id,payment_id,amount_minor,description,document_ids
+L-6B7EA29C06,T-2C467B2D60,2025-06-09T12:00:00+00:00,revenue,invoice_accrual,0,237941,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-203C4F416C,null,237941,Начисление по счёту,"[""DOC-B2712E30A4""]"
+L-3F88D1620B,T-5387D6DAA7,2025-04-14T12:00:00+00:00,cash,operating_expense,0,197462,UZS,E-9880C884A3,Nadir Demo 74,null,null,197462,Операционный расход,[]
+L-6F06EF6873,T-9C35052536,2025-06-28T12:00:00+00:00,opex,operating_expense,126856,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,126856,Операционный расход,[]
+L-FB041BEE9D,T-EA47DF85E2,2025-05-04T12:00:00+00:00,cash,payment_receipt,691487,0,UZS,E-9880C884A3,Nadir Demo 74,I-E0A00D5482,P-9712AC0FA1,691487,Поступление и распределение платежа,"[""DOC-348926C76F"", ""DOC-3F183880B0""]"
+L-DE4E0351AF,T-C9C7D178B7,2025-04-26T12:00:00+00:00,opex,operating_expense,25747,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,25747,Операционный расход,[]
+L-2C81C732BB,T-7E50BC005E,2025-06-30T12:00:00+00:00,receivables,invoice_accrual,534751,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-154785C777,null,534751,Начисление по счёту,"[""DOC-F96435E234""]"
+L-DED93D07AD,T-45A16820D6,2025-05-27T12:00:00+00:00,receivables,invoice_accrual,338000,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-122EA062D2,null,338000,Начисление по счёту,"[""DOC-3E2B6848BC""]"
+L-B756A78254,T-A2EBEDDC06,2025-05-24T12:00:00+00:00,cash,operating_expense,0,198019,UZS,E-B4FF840442,Aral Virtual 72,null,null,198019,Операционный расход,[]
+L-81AE8D19FD,T-3CDC15DC02,2025-06-30T12:00:00+00:00,receivables,payment_receipt,0,22234714,UZS,E-DB60BDBFC8,Alba Virtual 96,I-A22E5F2F42,P-D145B5B701,22234714,Поступление и распределение платежа,"[""DOC-AE5E255384"", ""DOC-5203C1B8DD""]"
+L-17632BA55D,T-258C368E1C,2025-05-12T12:00:00+00:00,opex,operating_expense,22545,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,22545,Операционный расход,[]
+L-6021DC59FB,T-E3459F9F84,2025-05-21T12:00:00+00:00,receivables,invoice_accrual,155281,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-80FFD49361,null,155281,Начисление по счёту,"[""DOC-C81F385140""]"
+L-8C98B4625D,T-247BB1E933,2025-06-08T12:00:00+00:00,opex,operating_expense,231568,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,231568,Операционный расход,[]
+L-9BDD2F4651,T-2F513D2BAF,2025-04-06T12:00:00+00:00,revenue,invoice_accrual,0,244721,UZS,E-4D46F76FBF,Delta Fictional 23,I-E0A2F94F7D,null,244721,Начисление по счёту,"[""DOC-1D6F3A1F2B""]"
+L-B59CCD1DB6,T-0D608F599D,2025-06-09T12:00:00+00:00,receivables,payment_receipt,0,92803,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,P-81FAB8D585,92803,Поступление и распределение платежа,"[""DOC-2BC674304E"", ""DOC-3FFB548AB3""]"
+L-11332249F2,T-5387D6DAA7,2025-04-14T12:00:00+00:00,opex,operating_expense,197462,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,197462,Операционный расход,[]
+L-B489289E2B,T-386BA6F7DD,2025-04-11T12:00:00+00:00,opex,operating_expense,67538,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,67538,Операционный расход,[]
+L-9176069FFA,T-E6A0064FA5,2025-05-26T12:00:00+00:00,opex,operating_expense,193681,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,193681,Операционный расход,[]
+L-325EE3E828,T-674CAB365A,2025-04-25T12:00:00+00:00,opex,operating_expense,193297,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,193297,Операционный расход,[]
+L-89020775B1,T-37D5AC877E,2025-05-05T12:00:00+00:00,cash,operating_expense,0,79132,UZS,E-B4FF840442,Aral Virtual 72,null,null,79132,Операционный расход,[]
+L-CAA5F788C2,T-347132F62C,2025-04-13T12:00:00+00:00,receivables,payment_receipt,0,293012,UZS,E-9880C884A3,Nadir Demo 74,I-0DBB55ED0A,P-CE7B275212,293012,Поступление и распределение платежа,"[""DOC-D024A14FE8"", ""DOC-5B11CD72B5""]"
+L-A12C7294EF,T-3834C9FA2F,2025-06-30T12:00:00+00:00,receivables,invoice_accrual,22234714,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-A22E5F2F42,null,22234714,Начисление по счёту,"[""DOC-AE5E255384""]"
+L-25F9FE8D7A,T-902A53A715,2025-06-07T12:00:00+00:00,cash,operating_expense,0,66692,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,66692,Операционный расход,[]
+L-EE45559216,T-23F5FFCB24,2025-05-08T12:00:00+00:00,receivables,invoice_accrual,197186,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-CB50A9880E,null,197186,Начисление по счёту,"[""DOC-E04803D126""]"
+L-77FAEC3804,T-9EBC620CD1,2025-05-11T12:00:00+00:00,cash,operating_expense,0,166427,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,166427,Операционный расход,[]
+L-5A5A038BFE,T-96D0A80F8C,2025-06-30T12:00:00+00:00,cash,payment_receipt,534751,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-154785C777,P-8653A117CD,534751,Поступление и распределение платежа,"[""DOC-F96435E234"", ""DOC-F4B944BFDF""]"
+L-1ED132D90A,T-60FB14FA44,2025-04-21T12:00:00+00:00,opex,operating_expense,249049,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,249049,Операционный расход,[]
+L-68CB498B0D,T-717BF1B60A,2025-06-15T12:00:00+00:00,opex,operating_expense,155250,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,155250,Операционный расход,[]
+L-7A7315D65A,T-20FCCE5985,2025-06-23T12:00:00+00:00,cash,operating_expense,0,140107,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,140107,Операционный расход,[]
+L-561E9498D6,T-674CAB365A,2025-04-25T12:00:00+00:00,cash,operating_expense,0,193297,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,193297,Операционный расход,[]
+L-5FFB4F21BD,T-19096F541F,2025-06-21T12:00:00+00:00,receivables,invoice_accrual,112600,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-58426212B8,null,112600,Начисление по счёту,"[""DOC-8A4AAA3808""]"
+L-1198EDBD49,T-C4D939AEA2,2025-05-10T12:00:00+00:00,receivables,payment_receipt,0,253952,UZS,E-4D46F76FBF,Delta Fictional 23,I-8EACBC9E2E,P-D59AB18F4D,253952,Поступление и распределение платежа,"[""DOC-F681E025C4"", ""DOC-2122974894""]"
+L-B331653DF8,T-4AD4A603D7,2025-04-23T12:00:00+00:00,cash,operating_expense,0,77692,UZS,E-B4FF840442,Aral Virtual 72,null,null,77692,Операционный расход,[]
+L-3E4CA5F4C6,T-8308030942,2025-04-23T12:00:00+00:00,opex,operating_expense,36225,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,36225,Операционный расход,[]
+L-26CC9101B9,T-7B4ACED7C1,2025-06-24T12:00:00+00:00,cash,operating_expense,0,99103,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,99103,Операционный расход,[]
+L-6BB4BDA45E,T-2C467B2D60,2025-06-09T12:00:00+00:00,receivables,invoice_accrual,237941,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-203C4F416C,null,237941,Начисление по счёту,"[""DOC-B2712E30A4""]"
+L-DAAEF6F799,T-F608A8BF9F,2025-04-21T12:00:00+00:00,opex,operating_expense,71820,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,71820,Операционный расход,[]
+L-676AF93CC4,T-5EAC9A24FD,2025-05-17T12:00:00+00:00,cash,operating_expense,0,144668,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,144668,Операционный расход,[]
+L-73C20FAF8B,T-28ABB5CF22,2025-05-28T12:00:00+00:00,opex,operating_expense,21153,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,21153,Операционный расход,[]
+L-2BEED62DE2,T-CCE37393C8,2025-05-25T12:00:00+00:00,cash,payment_receipt,222380,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-3CD267FD67,P-EAE4508062,222380,Поступление и распределение платежа,"[""DOC-CB6E5091CF"", ""DOC-2A73859A49""]"
+L-151697B77E,T-60FB14FA44,2025-04-21T12:00:00+00:00,cash,operating_expense,0,249049,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,249049,Операционный расход,[]
+L-6B6CF6E706,T-5988032E8C,2025-04-12T12:00:00+00:00,opex,operating_expense,141665,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,141665,Операционный расход,[]
+L-36C2744A29,T-A698D87A2C,2025-04-05T12:00:00+00:00,opex,operating_expense,66386,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,66386,Операционный расход,[]
+L-A42128C00A,T-22A3E3E130,2025-04-30T12:00:00+00:00,cash,operating_expense,0,11767,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,11767,Операционный расход,[]
+L-23689863FF,T-B0F9D2688A,2025-04-04T12:00:00+00:00,opex,operating_expense,242738,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,242738,Операционный расход,[]
+L-E1F345E64A,T-9314AEF9AB,2025-04-14T12:00:00+00:00,opex,operating_expense,33532,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,33532,Операционный расход,[]
+L-FC2056E170,T-9B224005B4,2025-06-22T12:00:00+00:00,cash,operating_expense,0,204970,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,204970,Операционный расход,[]
+L-A60201EE00,T-9F9E1F653E,2025-06-20T12:00:00+00:00,cash,operating_expense,0,208350,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,208350,Операционный расход,[]
+L-AA4902D097,T-7A9E86D84D,2025-05-03T12:00:00+00:00,receivables,invoice_accrual,385528,0,UZS,E-B4FF840442,Aral Virtual 72,I-BABDD00445,null,385528,Начисление по счёту,"[""DOC-CA0ABF3ADB""]"
+L-8723A5F024,T-67C2916F1D,2025-04-18T12:00:00+00:00,revenue,invoice_accrual,0,311320,UZS,E-9880C884A3,Nadir Demo 74,I-FD9DC28BCE,null,311320,Начисление по счёту,"[""DOC-54AE0FBDA6""]"
+L-C36127483A,T-12B1A924CA,2025-04-18T12:00:00+00:00,cash,operating_expense,0,179003,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,179003,Операционный расход,[]
+L-F00A7F56B2,T-77D8A8FCBD,2025-06-29T12:00:00+00:00,opex,operating_expense,185892,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,185892,Операционный расход,[]
+L-FBC4605FFF,T-97CE243D46,2025-05-16T12:00:00+00:00,cash,operating_expense,0,107140,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,107140,Операционный расход,[]
+L-2FF9171407,T-02C7D19D5F,2025-04-24T12:00:00+00:00,revenue,invoice_accrual,0,228204,UZS,E-B4FF840442,Aral Virtual 72,I-EC87ADB3A1,null,228204,Начисление по счёту,"[""DOC-92E3AC8E93""]"
+L-6A776F8FFF,T-104080B4D9,2025-05-14T12:00:00+00:00,receivables,payment_receipt,0,321956,UZS,E-DB60BDBFC8,Alba Virtual 96,I-DCA47D886A,P-785FE93B03,321956,Поступление и распределение платежа,"[""DOC-74ED8BBC05"", ""DOC-5B539BC4AE""]"
+L-BE8C631A8C,T-CDA9A09C07,2025-04-01T00:00:00+00:00,cash,opening_balance,307991481,0,UZS,E-CEA4ED2A9D,Mira Synthetic 48,null,null,307991481,Входящий остаток,[]
+L-92D579844E,T-AAFE348917,2025-04-21T12:00:00+00:00,opex,operating_expense,37128,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,37128,Операционный расход,[]
+L-A8E9F2BB98,T-444CFBB36D,2025-05-21T12:00:00+00:00,cash,payment_receipt,155281,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-80FFD49361,P-09E95B3C42,155281,Поступление и распределение платежа,"[""DOC-C81F385140"", ""DOC-38704F3A0D""]"
+L-58AFA728F1,T-902A53A715,2025-06-07T12:00:00+00:00,opex,operating_expense,66692,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,66692,Операционный расход,[]
+L-310D8F5320,T-C9C7D178B7,2025-04-26T12:00:00+00:00,cash,operating_expense,0,25747,UZS,E-9880C884A3,Nadir Demo 74,null,null,25747,Операционный расход,[]
+L-FF22FDC664,T-7A9E86D84D,2025-05-03T12:00:00+00:00,revenue,invoice_accrual,0,385528,UZS,E-B4FF840442,Aral Virtual 72,I-BABDD00445,null,385528,Начисление по счёту,"[""DOC-CA0ABF3ADB""]"
+L-12F451B415,T-55D69BAB96,2025-05-24T12:00:00+00:00,cash,operating_expense,0,23143,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,23143,Операционный расход,[]
+L-F5CF387945,T-5988032E8C,2025-04-12T12:00:00+00:00,cash,operating_expense,0,141665,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,141665,Операционный расход,[]
+L-D06BEAA630,T-FA9A8A3DAE,2025-05-27T12:00:00+00:00,receivables,invoice_accrual,238259,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-00C69287CE,null,238259,Начисление по счёту,"[""DOC-B14759D50A""]"
+L-A1AB5A1CAE,T-9314AEF9AB,2025-04-14T12:00:00+00:00,cash,operating_expense,0,33532,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,33532,Операционный расход,[]
+L-86C07EF594,T-E5F8588DE0,2025-05-01T12:00:00+00:00,cash,operating_expense,0,61998,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,61998,Операционный расход,[]
+L-2170DAD73C,T-468A708A74,2025-06-12T12:00:00+00:00,opex,operating_expense,69503,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,69503,Операционный расход,[]
+L-8DB179A2D9,T-EDFA2CC2BA,2025-06-24T12:00:00+00:00,receivables,invoice_accrual,332610,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-34C8CC8307,null,332610,Начисление по счёту,"[""DOC-92AAA7F92F""]"
+L-FB3F71D4AC,T-E430B99D7F,2025-05-24T12:00:00+00:00,opex,operating_expense,86920,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,86920,Операционный расход,[]
+L-8DB46F60FD,T-6E979DDD11,2025-06-18T12:00:00+00:00,opex,operating_expense,245462,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,245462,Операционный расход,[]
+L-70D889B885,T-E5EFAA1B1B,2025-04-08T12:00:00+00:00,opex,operating_expense,63773,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,63773,Операционный расход,[]
+L-008E3161BE,T-E5F8588DE0,2025-05-01T12:00:00+00:00,opex,operating_expense,61998,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,61998,Операционный расход,[]
+L-62A7E01AFA,T-1887ECE929,2025-06-09T12:00:00+00:00,cash,payment_receipt,30934,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,P-5FE7F25552,30934,Поступление и распределение платежа,"[""DOC-82A07E8D29"", ""DOC-B564DAA860""]"
+L-008851934A,T-E4ACD26A08,2025-06-09T12:00:00+00:00,settlement,refund,4640,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,P-AD257701BB,4640,Возврат переплаты,"[""DOC-2BC674304E"", ""DOC-0F515D4D43""]"
+L-D859B16266,T-20FCCE5985,2025-06-23T12:00:00+00:00,opex,operating_expense,140107,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,140107,Операционный расход,[]
+L-FBBFFC2F4A,T-B0333CCA10,2025-06-29T12:00:00+00:00,cash,payment_receipt,137193,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-ACC3EFC2F7,P-F1A3AAA85C,137193,Поступление и распределение платежа,"[""DOC-E80E9EFF5C"", ""DOC-A12CEE7011""]"
+L-1F5A0443FA,T-591835137F,2025-04-26T12:00:00+00:00,cash,operating_expense,0,48378,UZS,E-9880C884A3,Nadir Demo 74,null,null,48378,Операционный расход,[]
+L-0FE53BFAE6,T-297EF675C4,2025-04-26T12:00:00+00:00,receivables,payment_receipt,0,994888,UZS,E-4D46F76FBF,Delta Fictional 23,I-7A97A541EA,P-0C97A4EECF,994888,Поступление и распределение платежа,"[""DOC-AACA11BB4C"", ""DOC-F779D80FED""]"
+L-E90A411486,T-A72E416895,2025-06-21T12:00:00+00:00,receivables,invoice_accrual,353507,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-51C5FDE87B,null,353507,Начисление по счёту,"[""DOC-F0569B39DB""]"
+L-FF8E202F1B,T-ED7D6371A3,2025-06-29T12:00:00+00:00,cash,operating_expense,0,174406,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,174406,Операционный расход,[]
+L-6B092BDDEB,T-B0333CCA10,2025-06-29T12:00:00+00:00,receivables,payment_receipt,0,137193,UZS,E-4D46F76FBF,Delta Fictional 23,I-ACC3EFC2F7,P-F1A3AAA85C,137193,Поступление и распределение платежа,"[""DOC-E80E9EFF5C"", ""DOC-A12CEE7011""]"
+L-011019F509,T-FF856296AA,2025-04-01T12:00:00+00:00,receivables,invoice_accrual,339691,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-F48E5F2C03,null,339691,Начисление по счёту,"[""DOC-AFB07C59A2""]"
+L-C59687C88E,T-FFAA43B1D3,2025-06-28T12:00:00+00:00,opex,operating_expense,100769,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,100769,Операционный расход,[]
+L-B350773502,T-015507586F,2025-06-13T12:00:00+00:00,cash,operating_expense,0,107511,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,107511,Операционный расход,[]
+L-38D1FA80A5,T-FF856296AA,2025-04-01T12:00:00+00:00,revenue,invoice_accrual,0,339691,UZS,E-DB60BDBFC8,Alba Virtual 96,I-F48E5F2C03,null,339691,Начисление по счёту,"[""DOC-AFB07C59A2""]"
+L-88BD816AC1,T-E5EFAA1B1B,2025-04-08T12:00:00+00:00,cash,operating_expense,0,63773,UZS,E-9880C884A3,Nadir Demo 74,null,null,63773,Операционный расход,[]
+L-CFCDB82889,T-E3459F9F84,2025-05-21T12:00:00+00:00,revenue,invoice_accrual,0,155281,UZS,E-DB60BDBFC8,Alba Virtual 96,I-80FFD49361,null,155281,Начисление по счёту,"[""DOC-C81F385140""]"
+L-96BC6F42DC,T-B0F9D2688A,2025-04-04T12:00:00+00:00,cash,operating_expense,0,242738,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,242738,Операционный расход,[]
+L-39A0931A45,T-D6C7E908A9,2025-04-18T12:00:00+00:00,opex,operating_expense,83351,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,83351,Операционный расход,[]
+L-A905E1AC5F,T-55043F4769,2025-04-09T12:00:00+00:00,cash,payment_receipt,209419,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-64FC21DDAA,P-F64E12B00F,209419,Поступление и распределение платежа,"[""DOC-134F2E8A5E"", ""DOC-AAB3EF6D32""]"
+L-D94146EAAE,T-A838EAE03B,2025-05-04T12:00:00+00:00,receivables,invoice_accrual,242738,0,UZS,E-B4FF840442,Aral Virtual 72,I-91B187ADD1,null,242738,Начисление по счёту,"[""DOC-B451D6E45A""]"
+L-3ED9F91E3D,T-FFAA43B1D3,2025-06-28T12:00:00+00:00,cash,operating_expense,0,100769,UZS,E-B4FF840442,Aral Virtual 72,null,null,100769,Операционный расход,[]
+L-426A98F4D4,T-1887ECE929,2025-06-09T12:00:00+00:00,receivables,payment_receipt,0,30934,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,P-5FE7F25552,30934,Поступление и распределение платежа,"[""DOC-82A07E8D29"", ""DOC-B564DAA860""]"
+L-7726583E32,T-F1BE4EC152,2025-06-04T12:00:00+00:00,opex,operating_expense,229237,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,229237,Операционный расход,[]
+L-E6582C5779,T-3CDC15DC02,2025-06-30T12:00:00+00:00,cash,payment_receipt,22234714,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-A22E5F2F42,P-D145B5B701,22234714,Поступление и распределение платежа,"[""DOC-AE5E255384"", ""DOC-5203C1B8DD""]"
+L-74E4AF0B97,T-02C7D19D5F,2025-04-24T12:00:00+00:00,receivables,invoice_accrual,228204,0,UZS,E-B4FF840442,Aral Virtual 72,I-EC87ADB3A1,null,228204,Начисление по счёту,"[""DOC-92E3AC8E93""]"
+L-54E5395388,T-AD6B4CDE19,2025-05-25T12:00:00+00:00,revenue,invoice_accrual,0,222380,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-3CD267FD67,null,222380,Начисление по счёту,"[""DOC-CB6E5091CF""]"
+L-87431D4957,T-791C319767,2025-04-30T12:00:00+00:00,opex,operating_expense,166868,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,166868,Операционный расход,[]
+L-079D97BB16,T-884047AFE7,2025-05-16T12:00:00+00:00,receivables,payment_receipt,0,395476,UZS,E-DB60BDBFC8,Alba Virtual 96,I-7A6C050ADD,P-EB8B65B531,395476,Поступление и распределение платежа,"[""DOC-96AC555A75"", ""DOC-3F56E649C6""]"
+L-C67BF8D0EB,T-55043F4769,2025-04-09T12:00:00+00:00,receivables,payment_receipt,0,209419,UZS,E-4D46F76FBF,Delta Fictional 23,I-64FC21DDAA,P-F64E12B00F,209419,Поступление и распределение платежа,"[""DOC-134F2E8A5E"", ""DOC-AAB3EF6D32""]"
+L-850097B5D2,T-5151ED3CE7,2025-05-16T12:00:00+00:00,revenue,invoice_accrual,0,395476,UZS,E-DB60BDBFC8,Alba Virtual 96,I-7A6C050ADD,null,395476,Начисление по счёту,"[""DOC-96AC555A75""]"
+L-16A326624E,T-8488C6CFBA,2025-06-21T12:00:00+00:00,cash,operating_expense,0,98366,UZS,E-9880C884A3,Nadir Demo 74,null,null,98366,Операционный расход,[]
+L-EED0326AF9,T-C051DD9655,2025-06-03T12:00:00+00:00,receivables,invoice_accrual,585012,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-988A27F258,null,585012,Начисление по счёту,"[""DOC-0A01D504BA""]"
+L-FB09F00C86,T-F5AFCBD5CC,2025-04-03T12:00:00+00:00,opex,operating_expense,83849,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,83849,Операционный расход,[]
+L-F1BBD7AD8E,T-E630ABD592,2025-06-18T12:00:00+00:00,revenue,invoice_accrual,0,109074,UZS,E-B4FF840442,Aral Virtual 72,I-8D9A9CD6A7,null,109074,Начисление по счёту,"[""DOC-97197D58DE""]"
+L-2F3D53336B,T-81BCC6FCB0,2025-06-11T12:00:00+00:00,cash,operating_expense,0,148228,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,148228,Операционный расход,[]
+L-9EC7EDDE5E,T-30AC824AB0,2025-04-23T12:00:00+00:00,receivables,invoice_accrual,335636,0,UZS,E-9880C884A3,Nadir Demo 74,I-40E5E0C41F,null,335636,Начисление по счёту,"[""DOC-7D7411F8EA""]"
+L-FE266E0579,T-7FE3C7EBDC,2025-05-04T12:00:00+00:00,receivables,invoice_accrual,691487,0,UZS,E-9880C884A3,Nadir Demo 74,I-E0A00D5482,null,691487,Начисление по счёту,"[""DOC-348926C76F""]"
+L-3FCBC5D1A3,T-622A6A03F0,2025-06-17T12:00:00+00:00,cash,operating_expense,0,163334,UZS,E-B4FF840442,Aral Virtual 72,null,null,163334,Операционный расход,[]
+L-8124583182,T-F608A8BF9F,2025-04-21T12:00:00+00:00,cash,operating_expense,0,71820,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,71820,Операционный расход,[]
+L-FC68163D28,T-5151ED3CE7,2025-05-16T12:00:00+00:00,receivables,invoice_accrual,395476,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-7A6C050ADD,null,395476,Начисление по счёту,"[""DOC-96AC555A75""]"
+L-099FEFD931,T-D618005C8E,2025-04-13T12:00:00+00:00,revenue,invoice_accrual,0,328650,UZS,E-DB60BDBFC8,Alba Virtual 96,I-409F1926EB,null,328650,Начисление по счёту,"[""DOC-CB84E437E7""]"
+L-D9EB0C5FF9,T-988060A557,2025-06-09T12:00:00+00:00,receivables,invoice_accrual,92803,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,null,92803,Начисление по счёту,"[""DOC-82A07E8D29""]"
+L-5FFC267D03,T-B453512A81,2025-05-10T12:00:00+00:00,opex,operating_expense,24197,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,24197,Операционный расход,[]
+L-4421FC851A,T-B857CA9A65,2025-04-14T12:00:00+00:00,cash,operating_expense,0,27869,UZS,E-9880C884A3,Nadir Demo 74,null,null,27869,Операционный расход,[]
+L-A992A6FC11,T-C52512C2CD,2025-04-13T12:00:00+00:00,revenue,invoice_accrual,0,293012,UZS,E-9880C884A3,Nadir Demo 74,I-0DBB55ED0A,null,293012,Начисление по счёту,"[""DOC-D024A14FE8""]"
+L-0769021D01,T-D021AC4C76,2025-06-10T12:00:00+00:00,opex,operating_expense,222555,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,222555,Операционный расход,[]
+L-F4974596ED,T-111CE85A4C,2025-06-18T12:00:00+00:00,receivables,payment_receipt,0,109074,UZS,E-B4FF840442,Aral Virtual 72,I-8D9A9CD6A7,P-05ECF9BF23,109074,Поступление и распределение платежа,"[""DOC-97197D58DE"", ""DOC-86AE5B52F6""]"
+L-58D37A735C,T-717BF1B60A,2025-06-15T12:00:00+00:00,cash,operating_expense,0,155250,UZS,E-B4FF840442,Aral Virtual 72,null,null,155250,Операционный расход,[]
+L-467E4F95BD,T-75A15B68E1,2025-06-09T12:00:00+00:00,revenue,invoice_accrual,0,92803,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,null,92803,Начисление по счёту,"[""DOC-2BC674304E""]"
+L-1B305D1915,T-12B1A924CA,2025-04-18T12:00:00+00:00,opex,operating_expense,179003,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,179003,Операционный расход,[]
+L-BDB5C41F29,T-386BA6F7DD,2025-04-11T12:00:00+00:00,cash,operating_expense,0,67538,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,67538,Операционный расход,[]
+L-1012795B4D,T-88E54E621D,2025-07-01T12:00:00+00:00,receivables,invoice_accrual,135494,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-EB06DAE543,null,135494,Начисление по счёту,"[""DOC-A9AB9025E6""]"
+L-044965C102,T-C4D939AEA2,2025-05-10T12:00:00+00:00,cash,payment_receipt,253952,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-8EACBC9E2E,P-D59AB18F4D,253952,Поступление и распределение платежа,"[""DOC-F681E025C4"", ""DOC-2122974894""]"
+L-77C8045D30,T-AFC40B1F99,2025-05-17T12:00:00+00:00,revenue,invoice_accrual,0,326440,UZS,E-4D46F76FBF,Delta Fictional 23,I-02FB926967,null,326440,Начисление по счёту,"[""DOC-1EABAA603C""]"
+L-BF2244CA52,T-AF600245BE,2025-06-28T12:00:00+00:00,cash,operating_expense,0,82851,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,82851,Операционный расход,[]
+L-1D4A4A1197,T-AA4C791125,2025-05-10T12:00:00+00:00,revenue,invoice_accrual,0,253952,UZS,E-4D46F76FBF,Delta Fictional 23,I-8EACBC9E2E,null,253952,Начисление по счёту,"[""DOC-F681E025C4""]"
+L-E72C077BD0,T-D3EACD3EE2,2025-06-13T12:00:00+00:00,opex,operating_expense,211833,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,211833,Операционный расход,[]
+L-30ACE9036A,T-D6C7E908A9,2025-04-18T12:00:00+00:00,cash,operating_expense,0,83351,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,83351,Операционный расход,[]
+L-ACD037F758,T-E6A0064FA5,2025-05-26T12:00:00+00:00,cash,operating_expense,0,193681,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,193681,Операционный расход,[]
+L-1BD1FD491F,T-988060A557,2025-06-09T12:00:00+00:00,revenue,invoice_accrual,0,61869,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,null,61869,Начисление по счёту,"[""DOC-82A07E8D29""]"
+L-45324842E0,T-9F9E1F653E,2025-06-20T12:00:00+00:00,opex,operating_expense,208350,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,208350,Операционный расход,[]
+L-B18CC19749,T-2F513D2BAF,2025-04-06T12:00:00+00:00,receivables,invoice_accrual,244721,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-E0A2F94F7D,null,244721,Начисление по счёту,"[""DOC-1D6F3A1F2B""]"
+L-4B3B1A5275,T-331B4B80A1,2025-04-26T12:00:00+00:00,revenue,invoice_accrual,0,994888,UZS,E-4D46F76FBF,Delta Fictional 23,I-7A97A541EA,null,994888,Начисление по счёту,"[""DOC-AACA11BB4C""]"
+L-F788DC1357,T-3838F6F001,2025-05-27T12:00:00+00:00,cash,payment_receipt,338000,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-122EA062D2,P-5B2E120464,338000,Поступление и распределение платежа,"[""DOC-3E2B6848BC"", ""DOC-4ECBA9C146""]"
+L-B4B2FF0F6E,T-D8A5F88A32,2025-04-13T12:00:00+00:00,opex,operating_expense,7606,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,7606,Операционный расход,[]
+L-E6991A38AD,T-77D8A8FCBD,2025-06-29T12:00:00+00:00,cash,operating_expense,0,185892,UZS,E-9880C884A3,Nadir Demo 74,null,null,185892,Операционный расход,[]
+L-E89C1B2354,T-14CD5E47A2,2025-04-14T12:00:00+00:00,cash,operating_expense,0,209466,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,209466,Операционный расход,[]
+L-1A8AFBF179,T-207EA03745,2025-05-24T12:00:00+00:00,receivables,payment_receipt,0,353291,UZS,E-DB60BDBFC8,Alba Virtual 96,I-9748367C6B,P-8603B58E6B,353291,Поступление и распределение платежа,"[""DOC-EA5C027462"", ""DOC-BB1C1E8A40""]"
+L-E1514947FB,T-9B224005B4,2025-06-22T12:00:00+00:00,opex,operating_expense,204970,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,204970,Операционный расход,[]
+L-582560330E,T-111CE85A4C,2025-06-18T12:00:00+00:00,cash,payment_receipt,109074,0,UZS,E-B4FF840442,Aral Virtual 72,I-8D9A9CD6A7,P-05ECF9BF23,109074,Поступление и распределение платежа,"[""DOC-97197D58DE"", ""DOC-86AE5B52F6""]"
+L-44CE4DA497,T-34110F985D,2025-05-09T12:00:00+00:00,cash,operating_expense,0,131010,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,131010,Операционный расход,[]
+L-B8C6656EE5,T-D3EACD3EE2,2025-06-13T12:00:00+00:00,cash,operating_expense,0,211833,UZS,E-9880C884A3,Nadir Demo 74,null,null,211833,Операционный расход,[]
+L-BBC77E6051,T-7FE3C7EBDC,2025-05-04T12:00:00+00:00,revenue,invoice_accrual,0,691487,UZS,E-9880C884A3,Nadir Demo 74,I-E0A00D5482,null,691487,Начисление по счёту,"[""DOC-348926C76F""]"
+L-A0310715A5,T-258C368E1C,2025-05-12T12:00:00+00:00,cash,operating_expense,0,22545,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,22545,Операционный расход,[]
+L-71E06011B3,T-C051DD9655,2025-06-03T12:00:00+00:00,revenue,invoice_accrual,0,585012,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-988A27F258,null,585012,Начисление по счёту,"[""DOC-0A01D504BA""]"
+L-666DAA809F,T-BFAFE07CEB,2025-06-07T12:00:00+00:00,revenue,invoice_accrual,0,198949,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-C21DD754E9,null,198949,Начисление по счёту,"[""DOC-70A2FCAA87""]"
+L-0353AE4B20,T-BAA5C2493B,2025-06-23T12:00:00+00:00,cash,operating_expense,0,134573,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,134573,Операционный расход,[]
+L-971D74A7EB,T-E4ACD26A08,2025-06-09T12:00:00+00:00,cash,refund,0,4640,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,P-AD257701BB,4640,Возврат переплаты,"[""DOC-2BC674304E"", ""DOC-0F515D4D43""]"
+L-EAD26F3523,T-11C475712C,2025-06-03T12:00:00+00:00,receivables,payment_receipt,0,585012,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-988A27F258,P-628F6D7566,585012,Поступление и распределение платежа,"[""DOC-0A01D504BA"", ""DOC-CA275772C3""]"
+L-1EA9227A06,T-E630ABD592,2025-06-18T12:00:00+00:00,receivables,invoice_accrual,109074,0,UZS,E-B4FF840442,Aral Virtual 72,I-8D9A9CD6A7,null,109074,Начисление по счёту,"[""DOC-97197D58DE""]"
+L-E28708285A,T-8D7EBC7B9A,2025-06-19T12:00:00+00:00,revenue,invoice_accrual,0,179565,UZS,E-9880C884A3,Nadir Demo 74,I-7A14B27D5C,null,179565,Начисление по счёту,"[""DOC-AE3895CA0E""]"
+L-27519E779B,T-DF0055981B,2025-04-13T12:00:00+00:00,opex,operating_expense,165166,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,165166,Операционный расход,[]
+L-E07DDB1FD1,T-247BB1E933,2025-06-08T12:00:00+00:00,cash,operating_expense,0,231568,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,231568,Операционный расход,[]
+L-E728B98A27,T-46DD2A88DA,2025-05-05T12:00:00+00:00,cash,operating_expense,0,223731,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,223731,Операционный расход,[]
+L-A1BBA001FE,T-DA805A0DF5,2025-06-24T12:00:00+00:00,cash,operating_expense,0,92498,UZS,E-B4FF840442,Aral Virtual 72,null,null,92498,Операционный расход,[]
+L-5EC70795C1,T-AF600245BE,2025-06-28T12:00:00+00:00,opex,operating_expense,82851,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,82851,Операционный расход,[]
+L-82A5B53340,T-75A15B68E1,2025-06-09T12:00:00+00:00,receivables,invoice_accrual,92803,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,null,92803,Начисление по счёту,"[""DOC-2BC674304E""]"
+L-71F9926D18,T-763C0984EC,2025-06-29T12:00:00+00:00,receivables,invoice_accrual,137193,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-ACC3EFC2F7,null,137193,Начисление по счёту,"[""DOC-E80E9EFF5C""]"
+L-F51A06ABD3,T-AD6B4CDE19,2025-05-25T12:00:00+00:00,receivables,invoice_accrual,222380,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-3CD267FD67,null,222380,Начисление по счёту,"[""DOC-CB6E5091CF""]"
+L-EF983C6271,T-7E064D6666,2025-04-04T12:00:00+00:00,revenue,invoice_accrual,0,307785,UZS,E-9880C884A3,Nadir Demo 74,I-E35B11F205,null,307785,Начисление по счёту,"[""DOC-F5EA0FD1FE""]"
+L-0289848058,T-DEFCB82095,2025-05-31T12:00:00+00:00,cash,payment_receipt,124421,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-54D6A7B358,P-A610A2640C,124421,Поступление и распределение платежа,"[""DOC-7B686EDC26"", ""DOC-3DAF97AC2A""]"
+L-66191B2261,T-ED7D6371A3,2025-06-29T12:00:00+00:00,opex,operating_expense,174406,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,174406,Операционный расход,[]
+L-1015B7CA96,T-DA805A0DF5,2025-06-24T12:00:00+00:00,opex,operating_expense,92498,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,92498,Операционный расход,[]
+L-8902681FCE,T-88E54E621D,2025-07-01T12:00:00+00:00,revenue,invoice_accrual,0,135494,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-EB06DAE543,null,135494,Начисление по счёту,"[""DOC-A9AB9025E6""]"
+L-3B9AF4BE8D,T-DEFCB82095,2025-05-31T12:00:00+00:00,receivables,payment_receipt,0,124421,UZS,E-4D46F76FBF,Delta Fictional 23,I-54D6A7B358,P-A610A2640C,124421,Поступление и распределение платежа,"[""DOC-7B686EDC26"", ""DOC-3DAF97AC2A""]"
+L-E1FCBC8057,T-A72E416895,2025-06-21T12:00:00+00:00,revenue,invoice_accrual,0,353507,UZS,E-DB60BDBFC8,Alba Virtual 96,I-51C5FDE87B,null,353507,Начисление по счёту,"[""DOC-F0569B39DB""]"
+L-3FE9CB39F6,T-82EC149C4D,2025-06-19T12:00:00+00:00,receivables,payment_receipt,0,179565,UZS,E-9880C884A3,Nadir Demo 74,I-7A14B27D5C,P-8D49731BEF,179565,Поступление и распределение платежа,"[""DOC-AE3895CA0E"", ""DOC-69454DAAE1""]"
+L-A928461051,T-7B4ACED7C1,2025-06-24T12:00:00+00:00,opex,operating_expense,99103,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,99103,Операционный расход,[]
+L-2CE482E725,T-A2EBEDDC06,2025-05-24T12:00:00+00:00,opex,operating_expense,198019,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,198019,Операционный расход,[]
+L-E6C94E8B90,T-0D608F599D,2025-06-09T12:00:00+00:00,settlement,payment_receipt,0,4640,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,P-81FAB8D585,4640,Поступление и распределение платежа,"[""DOC-2BC674304E"", ""DOC-3FFB548AB3""]"
+L-7E462239F5,T-591835137F,2025-04-26T12:00:00+00:00,opex,operating_expense,48378,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,48378,Операционный расход,[]
+L-40A09B2881,T-11D0DB316D,2025-04-17T12:00:00+00:00,cash,operating_expense,0,247410,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,247410,Операционный расход,[]
+L-02E43F818F,T-AAFE348917,2025-04-21T12:00:00+00:00,cash,operating_expense,0,37128,UZS,E-9880C884A3,Nadir Demo 74,null,null,37128,Операционный расход,[]
+L-669AC88AC7,T-207EA03745,2025-05-24T12:00:00+00:00,cash,payment_receipt,353291,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-9748367C6B,P-8603B58E6B,353291,Поступление и распределение платежа,"[""DOC-EA5C027462"", ""DOC-BB1C1E8A40""]"
+L-BFD44CA411,T-97CE243D46,2025-05-16T12:00:00+00:00,opex,operating_expense,107140,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,107140,Операционный расход,[]
+L-E352AB92B5,T-1264E4103B,2025-04-12T12:00:00+00:00,revenue,invoice_accrual,0,187935,UZS,E-DB60BDBFC8,Alba Virtual 96,I-3FBDAC3EA8,null,187935,Начисление по счёту,"[""DOC-B775CFADA6""]"
+L-602BC96877,T-015507586F,2025-06-13T12:00:00+00:00,opex,operating_expense,107511,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,107511,Операционный расход,[]
+L-607227ECE1,T-9715C1E088,2025-04-18T12:00:00+00:00,receivables,invoice_accrual,88900,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-326F67AD78,null,88900,Начисление по счёту,"[""DOC-B8E4FCA34C""]"
+L-CA5D26544D,T-2FC6ADBD26,2025-05-31T12:00:00+00:00,revenue,invoice_accrual,0,124421,UZS,E-4D46F76FBF,Delta Fictional 23,I-54D6A7B358,null,124421,Начисление по счёту,"[""DOC-7B686EDC26""]"
+L-53299E66A8,T-791C319767,2025-04-30T12:00:00+00:00,cash,operating_expense,0,166868,UZS,E-B4FF840442,Aral Virtual 72,null,null,166868,Операционный расход,[]
+L-05F6083214,T-76D98E45AC,2025-05-13T12:00:00+00:00,cash,operating_expense,0,75138,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,75138,Операционный расход,[]
+L-B88F60941A,T-DFB22B3FB3,2025-06-26T12:00:00+00:00,receivables,invoice_accrual,304353,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-7EB7F02A7A,null,304353,Начисление по счёту,"[""DOC-9C21C6FD99""]"
+L-EFF87CC436,T-BDB95A1BC5,2025-05-07T12:00:00+00:00,opex,operating_expense,234171,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,234171,Операционный расход,[]
+L-6DA1470CEA,T-444CFBB36D,2025-05-21T12:00:00+00:00,receivables,payment_receipt,0,155281,UZS,E-DB60BDBFC8,Alba Virtual 96,I-80FFD49361,P-09E95B3C42,155281,Поступление и распределение платежа,"[""DOC-C81F385140"", ""DOC-38704F3A0D""]"
+L-3DC35342F7,T-4AD4A603D7,2025-04-23T12:00:00+00:00,opex,operating_expense,77692,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,77692,Операционный расход,[]
+L-A7324BF04C,T-4B5CB21A0D,2025-05-14T12:00:00+00:00,revenue,invoice_accrual,0,321956,UZS,E-DB60BDBFC8,Alba Virtual 96,I-DCA47D886A,null,321956,Начисление по счёту,"[""DOC-74ED8BBC05""]"
+L-D92DBCB8A5,T-2B42E0E91B,2025-05-27T12:00:00+00:00,opex,operating_expense,33114,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,33114,Операционный расход,[]
+L-69751892A5,T-2FC6ADBD26,2025-05-31T12:00:00+00:00,receivables,invoice_accrual,124421,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-54D6A7B358,null,124421,Начисление по счёту,"[""DOC-7B686EDC26""]"
+L-7FE8A8229D,T-0D608F599D,2025-06-09T12:00:00+00:00,cash,payment_receipt,97443,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-79194DF69B,P-81FAB8D585,97443,Поступление и распределение платежа,"[""DOC-2BC674304E"", ""DOC-3FFB548AB3""]"
+L-559E01C323,T-34110F985D,2025-05-09T12:00:00+00:00,opex,operating_expense,131010,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,131010,Операционный расход,[]
+L-4069635FBA,T-3834C9FA2F,2025-06-30T12:00:00+00:00,revenue,invoice_accrual,0,22234714,UZS,E-DB60BDBFC8,Alba Virtual 96,I-A22E5F2F42,null,22234714,Начисление по счёту,"[""DOC-AE5E255384""]"
+L-AEB9D7AE30,T-6EB7D317D1,2025-06-21T12:00:00+00:00,cash,operating_expense,0,54643,UZS,E-9880C884A3,Nadir Demo 74,null,null,54643,Операционный расход,[]
+L-C8B596D1F0,T-EA47DF85E2,2025-05-04T12:00:00+00:00,receivables,payment_receipt,0,691487,UZS,E-9880C884A3,Nadir Demo 74,I-E0A00D5482,P-9712AC0FA1,691487,Поступление и распределение платежа,"[""DOC-348926C76F"", ""DOC-3F183880B0""]"
+L-1378FF43A1,T-988060A557,2025-06-09T12:00:00+00:00,revenue,invoice_accrual,0,30934,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,null,30934,Начисление по счёту,"[""DOC-82A07E8D29""]"
+L-D75A51D5D1,T-A838EAE03B,2025-05-04T12:00:00+00:00,revenue,invoice_accrual,0,242738,UZS,E-B4FF840442,Aral Virtual 72,I-91B187ADD1,null,242738,Начисление по счёту,"[""DOC-B451D6E45A""]"
+L-D1FECAFF20,T-A3A2B314E7,2025-05-24T12:00:00+00:00,receivables,invoice_accrual,353291,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-9748367C6B,null,353291,Начисление по счёту,"[""DOC-EA5C027462""]"
+L-8FE8599A45,T-E461CE3626,2025-06-09T12:00:00+00:00,cash,payment_receipt,61869,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,P-ACC9A5EE4A,61869,Поступление и распределение платежа,"[""DOC-82A07E8D29"", ""DOC-D764FD356F""]"
+L-7A1CBABCD8,T-76D98E45AC,2025-05-13T12:00:00+00:00,opex,operating_expense,75138,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,75138,Операционный расход,[]
+L-AC2416F516,T-11C475712C,2025-06-03T12:00:00+00:00,cash,payment_receipt,585012,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-988A27F258,P-628F6D7566,585012,Поступление и распределение платежа,"[""DOC-0A01D504BA"", ""DOC-CA275772C3""]"
+L-D9F9D09331,T-48EAF68AE8,2025-04-15T12:00:00+00:00,opex,operating_expense,170767,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,170767,Операционный расход,[]
+L-2BF880D199,T-8308030942,2025-04-23T12:00:00+00:00,cash,operating_expense,0,36225,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,36225,Операционный расход,[]
+L-2EAB3C3E9B,T-8488C6CFBA,2025-06-21T12:00:00+00:00,opex,operating_expense,98366,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,98366,Операционный расход,[]
+L-565C91FF91,T-30AC824AB0,2025-04-23T12:00:00+00:00,revenue,invoice_accrual,0,335636,UZS,E-9880C884A3,Nadir Demo 74,I-40E5E0C41F,null,335636,Начисление по счёту,"[""DOC-7D7411F8EA""]"
+L-B440BDF4C9,T-68EE674B73,2025-04-15T12:00:00+00:00,cash,operating_expense,0,234194,UZS,E-9880C884A3,Nadir Demo 74,null,null,234194,Операционный расход,[]
+L-CF4FD1BEC6,T-6EB7D317D1,2025-06-21T12:00:00+00:00,opex,operating_expense,54643,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,54643,Операционный расход,[]
+L-E3624C3A6A,T-9C35052536,2025-06-28T12:00:00+00:00,cash,operating_expense,0,126856,UZS,E-9880C884A3,Nadir Demo 74,null,null,126856,Операционный расход,[]
+L-4A85056A77,T-72D77D4285,2025-04-09T12:00:00+00:00,revenue,invoice_accrual,0,209419,UZS,E-4D46F76FBF,Delta Fictional 23,I-64FC21DDAA,null,209419,Начисление по счёту,"[""DOC-134F2E8A5E""]"
+L-39DE60E190,T-AFC40B1F99,2025-05-17T12:00:00+00:00,receivables,invoice_accrual,326440,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-02FB926967,null,326440,Начисление по счёту,"[""DOC-1EABAA603C""]"
+L-4CD97AF038,T-4B5CB21A0D,2025-05-14T12:00:00+00:00,receivables,invoice_accrual,321956,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-DCA47D886A,null,321956,Начисление по счёту,"[""DOC-74ED8BBC05""]"
+L-E488A5E129,T-1264E4103B,2025-04-12T12:00:00+00:00,receivables,invoice_accrual,187935,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-3FBDAC3EA8,null,187935,Начисление по счёту,"[""DOC-B775CFADA6""]"
+L-F05D487702,T-F1BE4EC152,2025-06-04T12:00:00+00:00,cash,operating_expense,0,229237,UZS,E-B4FF840442,Aral Virtual 72,null,null,229237,Операционный расход,[]
+L-B8C6A0A4CB,T-5EAC9A24FD,2025-05-17T12:00:00+00:00,opex,operating_expense,144668,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,144668,Операционный расход,[]
+L-5801907090,T-3838F6F001,2025-05-27T12:00:00+00:00,receivables,payment_receipt,0,338000,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-122EA062D2,P-5B2E120464,338000,Поступление и распределение платежа,"[""DOC-3E2B6848BC"", ""DOC-4ECBA9C146""]"
+L-F4697E1C19,T-D8A5F88A32,2025-04-13T12:00:00+00:00,cash,operating_expense,0,7606,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,7606,Операционный расход,[]
+L-8000901519,T-9715C1E088,2025-04-18T12:00:00+00:00,revenue,invoice_accrual,0,88900,UZS,E-4D46F76FBF,Delta Fictional 23,I-326F67AD78,null,88900,Начисление по счёту,"[""DOC-B8E4FCA34C""]"
+L-53F1F4F3B3,T-CCE37393C8,2025-05-25T12:00:00+00:00,receivables,payment_receipt,0,222380,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-3CD267FD67,P-EAE4508062,222380,Поступление и распределение платежа,"[""DOC-CB6E5091CF"", ""DOC-2A73859A49""]"
+L-90590A3655,T-A698D87A2C,2025-04-05T12:00:00+00:00,cash,operating_expense,0,66386,UZS,E-B4FF840442,Aral Virtual 72,null,null,66386,Операционный расход,[]
+L-377A02FB0E,T-6E979DDD11,2025-06-18T12:00:00+00:00,cash,operating_expense,0,245462,UZS,E-9880C884A3,Nadir Demo 74,null,null,245462,Операционный расход,[]
+L-987757DD65,T-F7A48E710B,2025-04-14T12:00:00+00:00,opex,operating_expense,125881,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,125881,Операционный расход,[]
+L-B35086542A,T-0C2B6B6CC7,2025-05-25T12:00:00+00:00,cash,operating_expense,0,163058,UZS,E-9880C884A3,Nadir Demo 74,null,null,163058,Операционный расход,[]
+L-3BC4620E6C,T-884047AFE7,2025-05-16T12:00:00+00:00,cash,payment_receipt,395476,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-7A6C050ADD,P-EB8B65B531,395476,Поступление и распределение платежа,"[""DOC-96AC555A75"", ""DOC-3F56E649C6""]"
+L-2324D23263,T-CD9D3E16B8,2025-06-06T12:00:00+00:00,revenue,invoice_accrual,0,260504,UZS,E-4D46F76FBF,Delta Fictional 23,I-5442666B5E,null,260504,Начисление по счёту,"[""DOC-38F61BD90F""]"
+L-E99C88B28B,T-96D0A80F8C,2025-06-30T12:00:00+00:00,receivables,payment_receipt,0,534751,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-154785C777,P-8653A117CD,534751,Поступление и распределение платежа,"[""DOC-F96435E234"", ""DOC-F4B944BFDF""]"
+L-5663A4E418,T-48EAF68AE8,2025-04-15T12:00:00+00:00,cash,operating_expense,0,170767,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,170767,Операционный расход,[]
+L-8F1D09F7AE,T-8D7EBC7B9A,2025-06-19T12:00:00+00:00,receivables,invoice_accrual,179565,0,UZS,E-9880C884A3,Nadir Demo 74,I-7A14B27D5C,null,179565,Начисление по счёту,"[""DOC-AE3895CA0E""]"
+L-9BD5B080F9,T-AA4C791125,2025-05-10T12:00:00+00:00,receivables,invoice_accrual,253952,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-8EACBC9E2E,null,253952,Начисление по счёту,"[""DOC-F681E025C4""]"
+L-D7277178EA,T-F7A48E710B,2025-04-14T12:00:00+00:00,cash,operating_expense,0,125881,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,125881,Операционный расход,[]
+L-A191B77069,T-9609C01F37,2025-05-29T12:00:00+00:00,cash,operating_expense,0,73684,UZS,E-9880C884A3,Nadir Demo 74,null,null,73684,Операционный расход,[]
+L-59B6F0C7DD,T-347132F62C,2025-04-13T12:00:00+00:00,cash,payment_receipt,293012,0,UZS,E-9880C884A3,Nadir Demo 74,I-0DBB55ED0A,P-CE7B275212,293012,Поступление и распределение платежа,"[""DOC-D024A14FE8"", ""DOC-5B11CD72B5""]"
+L-291DEFE9CB,T-46DD2A88DA,2025-05-05T12:00:00+00:00,opex,operating_expense,223731,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,223731,Операционный расход,[]
+L-9787C404D1,T-BAA5C2493B,2025-06-23T12:00:00+00:00,opex,operating_expense,134573,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,134573,Операционный расход,[]
+L-D42546F87C,T-F5AFCBD5CC,2025-04-03T12:00:00+00:00,cash,operating_expense,0,83849,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,83849,Операционный расход,[]
+L-65A8D82E75,T-297EF675C4,2025-04-26T12:00:00+00:00,cash,payment_receipt,994888,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-7A97A541EA,P-0C97A4EECF,994888,Поступление и распределение платежа,"[""DOC-AACA11BB4C"", ""DOC-F779D80FED""]"
+L-EC6CBF9982,T-9EBC620CD1,2025-05-11T12:00:00+00:00,opex,operating_expense,166427,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,166427,Операционный расход,[]
+L-BBBF918E03,T-28ABB5CF22,2025-05-28T12:00:00+00:00,cash,operating_expense,0,21153,UZS,E-B4FF840442,Aral Virtual 72,null,null,21153,Операционный расход,[]
+L-F35D7391C0,T-19096F541F,2025-06-21T12:00:00+00:00,revenue,invoice_accrual,0,112600,UZS,E-4D46F76FBF,Delta Fictional 23,I-58426212B8,null,112600,Начисление по счёту,"[""DOC-8A4AAA3808""]"
+L-0FF5A427AC,T-BFAFE07CEB,2025-06-07T12:00:00+00:00,receivables,invoice_accrual,198949,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-C21DD754E9,null,198949,Начисление по счёту,"[""DOC-70A2FCAA87""]"
+L-7EE5B08374,T-0C2B6B6CC7,2025-05-25T12:00:00+00:00,opex,operating_expense,163058,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,163058,Операционный расход,[]
+L-E38D04E76D,T-622A6A03F0,2025-06-17T12:00:00+00:00,opex,operating_expense,163334,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,163334,Операционный расход,[]
+L-EE0A6822D2,T-14CD5E47A2,2025-04-14T12:00:00+00:00,opex,operating_expense,209466,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,209466,Операционный расход,[]
+L-B8DB79C497,T-81BCC6FCB0,2025-06-11T12:00:00+00:00,opex,operating_expense,148228,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,148228,Операционный расход,[]
+L-D0DA48E664,T-2B42E0E91B,2025-05-27T12:00:00+00:00,cash,operating_expense,0,33114,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,33114,Операционный расход,[]
+L-85885E10EB,T-029B3E21E6,2025-05-31T12:00:00+00:00,opex,operating_expense,175730,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,175730,Операционный расход,[]
+L-51317CCB81,T-CDA9A09C07,2025-04-01T00:00:00+00:00,equity,opening_balance,0,307991481,UZS,E-CEA4ED2A9D,Mira Synthetic 48,null,null,307991481,Входящий остаток,[]
+L-A1B03A2643,T-67C2916F1D,2025-04-18T12:00:00+00:00,receivables,invoice_accrual,311320,0,UZS,E-9880C884A3,Nadir Demo 74,I-FD9DC28BCE,null,311320,Начисление по счёту,"[""DOC-54AE0FBDA6""]"
+L-D195EEFD2E,T-D618005C8E,2025-04-13T12:00:00+00:00,receivables,invoice_accrual,328650,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-409F1926EB,null,328650,Начисление по счёту,"[""DOC-CB84E437E7""]"
+L-4AF0DDC365,T-68EE674B73,2025-04-15T12:00:00+00:00,opex,operating_expense,234194,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,234194,Операционный расход,[]
+L-B0DBF75325,T-E430B99D7F,2025-05-24T12:00:00+00:00,cash,operating_expense,0,86920,UZS,E-9880C884A3,Nadir Demo 74,null,null,86920,Операционный расход,[]
+L-B3D7389EEF,T-BDB95A1BC5,2025-05-07T12:00:00+00:00,cash,operating_expense,0,234171,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,234171,Операционный расход,[]
+L-1BDAD67634,T-7E50BC005E,2025-06-30T12:00:00+00:00,revenue,invoice_accrual,0,534751,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-154785C777,null,534751,Начисление по счёту,"[""DOC-F96435E234""]"
+L-846B79AC69,T-72D77D4285,2025-04-09T12:00:00+00:00,receivables,invoice_accrual,209419,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-64FC21DDAA,null,209419,Начисление по счёту,"[""DOC-134F2E8A5E""]"
+L-6D731DFDB2,T-331B4B80A1,2025-04-26T12:00:00+00:00,receivables,invoice_accrual,994888,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-7A97A541EA,null,994888,Начисление по счёту,"[""DOC-AACA11BB4C""]"
+L-F4012127F9,T-C52512C2CD,2025-04-13T12:00:00+00:00,receivables,invoice_accrual,293012,0,UZS,E-9880C884A3,Nadir Demo 74,I-0DBB55ED0A,null,293012,Начисление по счёту,"[""DOC-D024A14FE8""]"
+L-AAAC42C16F,T-A3A2B314E7,2025-05-24T12:00:00+00:00,revenue,invoice_accrual,0,353291,UZS,E-DB60BDBFC8,Alba Virtual 96,I-9748367C6B,null,353291,Начисление по счёту,"[""DOC-EA5C027462""]"
+L-E64C15A568,T-EDFA2CC2BA,2025-06-24T12:00:00+00:00,revenue,invoice_accrual,0,332610,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-34C8CC8307,null,332610,Начисление по счёту,"[""DOC-92AAA7F92F""]"
+L-E2D0F12E5C,T-23F5FFCB24,2025-05-08T12:00:00+00:00,revenue,invoice_accrual,0,197186,UZS,E-DB60BDBFC8,Alba Virtual 96,I-CB50A9880E,null,197186,Начисление по счёту,"[""DOC-E04803D126""]"
+L-27C1BC919E,T-CD9D3E16B8,2025-06-06T12:00:00+00:00,receivables,invoice_accrual,260504,0,UZS,E-4D46F76FBF,Delta Fictional 23,I-5442666B5E,null,260504,Начисление по счёту,"[""DOC-38F61BD90F""]"
+L-FBC82FE403,T-B453512A81,2025-05-10T12:00:00+00:00,cash,operating_expense,0,24197,UZS,E-B4FF840442,Aral Virtual 72,null,null,24197,Операционный расход,[]
+L-BB9FE5B458,T-D021AC4C76,2025-06-10T12:00:00+00:00,cash,operating_expense,0,222555,UZS,E-B4FF840442,Aral Virtual 72,null,null,222555,Операционный расход,[]
+L-6EB07C067A,T-11D0DB316D,2025-04-17T12:00:00+00:00,opex,operating_expense,247410,0,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,247410,Операционный расход,[]
+L-99F815E9C3,T-364840C8AF,2025-05-30T12:00:00+00:00,cash,operating_expense,0,242932,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,242932,Операционный расход,[]
+L-5E86F2495C,T-55D69BAB96,2025-05-24T12:00:00+00:00,opex,operating_expense,23143,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,23143,Операционный расход,[]
+L-28D36B6ABC,T-104080B4D9,2025-05-14T12:00:00+00:00,cash,payment_receipt,321956,0,UZS,E-DB60BDBFC8,Alba Virtual 96,I-DCA47D886A,P-785FE93B03,321956,Поступление и распределение платежа,"[""DOC-74ED8BBC05"", ""DOC-5B539BC4AE""]"
+L-98EF45D765,T-2C52097772,2025-05-20T12:00:00+00:00,opex,operating_expense,224293,0,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,224293,Операционный расход,[]
+L-66467AF31B,T-82EC149C4D,2025-06-19T12:00:00+00:00,cash,payment_receipt,179565,0,UZS,E-9880C884A3,Nadir Demo 74,I-7A14B27D5C,P-8D49731BEF,179565,Поступление и распределение платежа,"[""DOC-AE3895CA0E"", ""DOC-69454DAAE1""]"
+L-419FED3C10,T-37D5AC877E,2025-05-05T12:00:00+00:00,opex,operating_expense,79132,0,UZS,E-B4FF840442,Aral Virtual 72,null,null,79132,Операционный расход,[]
+L-94AF251518,T-2C52097772,2025-05-20T12:00:00+00:00,cash,operating_expense,0,224293,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,224293,Операционный расход,[]
+L-75CE34266A,T-E461CE3626,2025-06-09T12:00:00+00:00,receivables,payment_receipt,0,61869,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-86CB5B4011,P-ACC9A5EE4A,61869,Поступление и распределение платежа,"[""DOC-82A07E8D29"", ""DOC-D764FD356F""]"
+L-FE6BFF17EF,T-029B3E21E6,2025-05-31T12:00:00+00:00,cash,operating_expense,0,175730,UZS,E-4D46F76FBF,Delta Fictional 23,null,null,175730,Операционный расход,[]
+L-6CA6988D67,T-DFB22B3FB3,2025-06-26T12:00:00+00:00,revenue,invoice_accrual,0,304353,UZS,E-DB60BDBFC8,Alba Virtual 96,I-7EB7F02A7A,null,304353,Начисление по счёту,"[""DOC-9C21C6FD99""]"
+L-22A53FCA3C,T-468A708A74,2025-06-12T12:00:00+00:00,cash,operating_expense,0,69503,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,69503,Операционный расход,[]
+L-66173C5158,T-22A3E3E130,2025-04-30T12:00:00+00:00,opex,operating_expense,11767,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,11767,Операционный расход,[]
+L-30BE520E41,T-9609C01F37,2025-05-29T12:00:00+00:00,opex,operating_expense,73684,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,73684,Операционный расход,[]
+L-0FDDEC7855,T-B857CA9A65,2025-04-14T12:00:00+00:00,opex,operating_expense,27869,0,UZS,E-9880C884A3,Nadir Demo 74,null,null,27869,Операционный расход,[]
+L-59A8A4BBA3,T-45A16820D6,2025-05-27T12:00:00+00:00,revenue,invoice_accrual,0,338000,UZS,E-4ACF6E54BF,Mira Synthetic 37,I-122EA062D2,null,338000,Начисление по счёту,"[""DOC-3E2B6848BC""]"
+L-7D8D90E8CD,T-763C0984EC,2025-06-29T12:00:00+00:00,revenue,invoice_accrual,0,137193,UZS,E-4D46F76FBF,Delta Fictional 23,I-ACC3EFC2F7,null,137193,Начисление по счёту,"[""DOC-E80E9EFF5C""]"
+L-B814C4ACBF,T-7E064D6666,2025-04-04T12:00:00+00:00,receivables,invoice_accrual,307785,0,UZS,E-9880C884A3,Nadir Demo 74,I-E35B11F205,null,307785,Начисление по счёту,"[""DOC-F5EA0FD1FE""]"
+L-17663081DA,T-364840C8AF,2025-05-30T12:00:00+00:00,opex,operating_expense,242932,0,UZS,E-4ACF6E54BF,Mira Synthetic 37,null,null,242932,Операционный расход,[]
+L-C177427645,T-DF0055981B,2025-04-13T12:00:00+00:00,cash,operating_expense,0,165166,UZS,E-DB60BDBFC8,Alba Virtual 96,null,null,165166,Операционный расход,[]
+L-9892380CB6,T-FA9A8A3DAE,2025-05-27T12:00:00+00:00,revenue,invoice_accrual,0,238259,UZS,E-4D46F76FBF,Delta Fictional 23,I-00C69287CE,null,238259,Начисление по счёту,"[""DOC-B14759D50A""]"

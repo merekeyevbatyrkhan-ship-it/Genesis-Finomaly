@@ -5,6 +5,7 @@ import type { BaseCurrency, Episode, EpisodeConfig, Scenario } from './auditType
 import { SignalTerrain } from './SignalTerrain'
 import { Icon } from './Visuals'
 import { auditMode } from './auditClient'
+import { configOK } from './demoSession'
 import type { IconName } from './Visuals'
 
 export type ConfigDraft = Omit<EpisodeConfig, 'seed'> & {seed: string}
@@ -80,7 +81,8 @@ export function Dashboard({config, episode, busy, onConfig, onStart, onConfigure
   const [touched, setTouched] = useState({company: false, seed: false})
   const seed = Number(config.seed)
   const badSeed = !config.seed.trim() || !Number.isInteger(seed) || seed < 0 || seed > 4294967295
-  const badCompany = !config.companyName.trim()
+  const companyName = config.companyName.trim()
+  const badCompany = !configOK({...config, companyName, seed}) && (!companyName || companyName.length > 80 || /[\u0000-\u001F\u007F\u202A-\u202E\u2066-\u2069]/.test(companyName))
   const wrongPeriod = Boolean(config.periodStart && config.periodEnd && config.periodStart > config.periodEnd)
   const canStart = !wrongPeriod && !badSeed && !badCompany && config.periodStart && config.periodEnd
   const set = <K extends keyof ConfigDraft>(key: K, value: ConfigDraft[K]) => onConfig({...config, [key]: value})

@@ -55,8 +55,6 @@
   color: var(--text, #f8f8ff);
   background: color-mix(in srgb, var(--violet, #b9adff) 9%, transparent);
 }
-.st-action:active,
-.st-close:active { transform: scale(.96); }
 .st-theme:hover .st-glyph { transform: rotate(-12deg); }
 .st-theme .st-glyph { transition: transform .25s ease; }
 .st-close {

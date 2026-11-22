@@ -8,6 +8,7 @@ import type { EpisodeConfig } from './auditTypes'
 import { auditMode } from './auditClient'
 import { useAuditRun } from './useAuditRun'
 import { useLabMotion } from './useLabMotion'
+import { useButtonFeedback } from './useButtonFeedback'
 import logo from './assets/brand/finomaly-logo.svg'
 
 const sections = {
@@ -36,6 +37,7 @@ const glossary = [
 ]
 
 export default function App() {
+  useButtonFeedback()
   const run = useAuditRun()
   const {episode} = run
   const [screen, setScreen] = useState<Screen>(() => {

@@ -1,0 +1,282 @@
+[
+  {
+    "split": "train",
+    "path": "train/01",
+    "seed": 8011,
+    "config": {
+      "scenario": "clean",
+      "base_currency": "KZT",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-3BADF9FC5D0D5D995DCF"
+  },
+  {
+    "split": "train",
+    "path": "train/02",
+    "seed": 8090,
+    "config": {
+      "scenario": "duplicate_invoice",
+      "base_currency": "USD",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-5C5D19B56D5A669CD3DF"
+  },
+  {
+    "split": "train",
+    "path": "train/03",
+    "seed": 8169,
+    "config": {
+      "scenario": "partial_allocation",
+      "base_currency": "EUR",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-B2C944BF8089F97EF1FA"
+  },
+  {
+    "split": "train",
+    "path": "train/04",
+    "seed": 8248,
+    "config": {
+      "scenario": "fx_rate",
+      "base_currency": "JPY",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-D78C203A123642236403"
+  },
+  {
+    "split": "train",
+    "path": "train/05",
+    "seed": 8327,
+    "config": {
+      "scenario": "period_cutoff",
+      "base_currency": "CHF",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-F58CC6E2412E7A98D8CE"
+  },
+  {
+    "split": "train",
+    "path": "train/06",
+    "seed": 8406,
+    "config": {
+      "scenario": "allocation_fx",
+      "base_currency": "GBP",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-0E62726A244B5EFA45E2"
+  },
+  {
+    "split": "train",
+    "path": "train/07",
+    "seed": 8485,
+    "config": {
+      "scenario": "duplicate_cutoff",
+      "base_currency": "CNY",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-DD3E2C8DAE1158788E35"
+  },
+  {
+    "split": "train",
+    "path": "train/08",
+    "seed": 8564,
+    "config": {
+      "scenario": "clean",
+      "base_currency": "UZS",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-C6AA87815BEE6D803B4B"
+  },
+  {
+    "split": "train",
+    "path": "train/09",
+    "seed": 8643,
+    "config": {
+      "scenario": "allocation_fx",
+      "base_currency": "KZT",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-4D9F9998BB0F4CBBE79D"
+  },
+  {
+    "split": "train",
+    "path": "train/10",
+    "seed": 8722,
+    "config": {
+      "scenario": "duplicate_cutoff",
+      "base_currency": "EUR",
+      "period_start": "2025-01-01",
+      "period_end": "2025-03-31",
+      "documents_count": 60,
+      "ledger_count": 260
+    },
+    "episode_id": "FIN-84F536623488A187C645"
+  },
+  {
+    "split": "dev",
+    "path": "dev/01",
+    "seed": 37001,
+    "config": {
+      "scenario": "clean",
+      "base_currency": "JPY",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-1EB16040DCFA69863CD5"
+  },
+  {
+    "split": "dev",
+    "path": "dev/02",
+    "seed": 37114,
+    "config": {
+      "scenario": "duplicate_invoice",
+      "base_currency": "CHF",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-99F082A028133AAE6366"
+  },
+  {
+    "split": "dev",
+    "path": "dev/03",
+    "seed": 37227,
+    "config": {
+      "scenario": "partial_allocation",
+      "base_currency": "GBP",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-6D4B9FBF5A42F8C6B007"
+  },
+  {
+    "split": "dev",
+    "path": "dev/04",
+    "seed": 37340,
+    "config": {
+      "scenario": "fx_rate",
+      "base_currency": "CNY",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-E881A8A741E72836E695"
+  },
+  {
+    "split": "dev",
+    "path": "dev/05",
+    "seed": 37453,
+    "config": {
+      "scenario": "period_cutoff",
+      "base_currency": "UZS",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-269D5D206B225EABE480"
+  },
+  {
+    "split": "dev",
+    "path": "dev/06",
+    "seed": 37566,
+    "config": {
+      "scenario": "allocation_fx",
+      "base_currency": "KZT",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-45BB2A047E38A57E093C"
+  },
+  {
+    "split": "dev",
+    "path": "dev/07",
+    "seed": 37679,
+    "config": {
+      "scenario": "duplicate_cutoff",
+      "base_currency": "EUR",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-2C903B41D005FF417224"
+  },
+  {
+    "split": "dev",
+    "path": "dev/08",
+    "seed": 37792,
+    "config": {
+      "scenario": "clean",
+      "base_currency": "KZT",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-76C9C9591A24A5E8D43E"
+  },
+  {
+    "split": "dev",
+    "path": "dev/09",
+    "seed": 37905,
+    "config": {
+      "scenario": "allocation_fx",
+      "base_currency": "USD",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-EC43E0B65F4D313C3212"
+  },
+  {
+    "split": "dev",
+    "path": "dev/10",
+    "seed": 38018,
+    "config": {
+      "scenario": "duplicate_cutoff",
+      "base_currency": "EUR",
+      "period_start": "2025-04-01",
+      "period_end": "2025-06-30",
+      "documents_count": 64,
+      "ledger_count": 280
+    },
+    "episode_id": "FIN-5FC53CC628FCE476ABC8"
+  }
+]
